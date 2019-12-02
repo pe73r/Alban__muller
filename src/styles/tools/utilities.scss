@@ -1,0 +1,128 @@
+
+/*================ containers =============================*/
+
+    .container-full{
+      width: 100%;
+      max-width: 1500px;
+      margin: 0 auto;
+    }
+
+    .container-large{
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .container-medium{
+      width: 90%;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .container-small{
+      width: 70%;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+/*================ buttons =============================*/
+
+    .primary__button{
+      padding: 10px 60px;
+      background-color: inherit;
+      border: 1px solid $black;
+      color: $black;
+    }
+
+
+/*================ Utilities =============================*/
+
+  .align-center {
+    text-align: center;
+  }
+  .align-left {
+    text-align: left;
+  }
+  .align-right {
+    text-align: right;
+  }
+
+  .full-width{
+    width: 100%;
+  }
+
+  .float-left{
+    float: left;
+  }
+
+  .float-right{
+    float: right;
+  }
+
+  .inherit{
+    width: inherit;
+  }
+
+  .position-absolute-center{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .position-absolute-bottom{
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translate(-50%, -5%);
+  }
+
+  .text-initial{
+      text-transform: initial;
+  }
+
+  .block{
+    display: block;
+  }
+
+  .none{
+    display: none;
+  }
+
+  .desktop-only{
+    display: block;
+  }
+
+  .mobile-only{
+    display: none;
+  }
+
+  .line-height{
+    line-height: 0;
+  }
+
+  .margin-cero{
+    margin: 0;
+  }
+  .relative{
+    position: relative;
+  }
+
+  .absolute{
+    position: absolute;
+  }
+
+  @media #{$pocket}{
+      .desktop-only{
+        display: none !important;
+      }
+      .mobile-only{
+        display: block;
+      }
+      .align-center-mobile {
+        text-align: center;
+      }
+      .align-justify-mobile {
+        text-align: justify;
+      }
+  }

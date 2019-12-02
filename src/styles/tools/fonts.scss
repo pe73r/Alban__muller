@@ -1,0 +1,79 @@
+// FONTS /////
+
+
+//Monserrat //
+//regular ///
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,800,900&display=swap');
+
+   @mixin monserrat {
+     font-family: 'Montserrat', sans-serif;
+     font-weight: 400;
+   }
+
+   .monserrat{
+     @include monserrat;
+   }
+
+//Monserrat bold ///
+
+@mixin monserrat-bold {
+     font-family: 'Montserrat', sans-serif;
+     font-weight: 800;
+}
+
+.monserrat-bold{
+    @include monserrat-bold;
+}
+
+//Monserrat light ///
+
+@mixin monserrat-light {
+     font-family: 'Montserrat', sans-serif;
+     font-weight: 300;
+
+}
+
+.monserrat-light{
+    @include monserrat-light;
+}
+
+
+//Mukta ///
+@import url('https://fonts.googleapis.com/css?family=Mukta&display=swap');
+
+@font-face {
+      font-family: 'Mukta';
+      src:    url('https://cdn.shopify.com/s/files/1/0254/1518/8529/files/Mukta-Regular.ttf?68') format('tff');
+}
+
+@mixin mukta {
+     font-family: 'Mukta';
+}
+
+.mukta{
+    @include mukta;
+}
+
+
+//PlayfairDisplay ///
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900,900i&display=swap');
+
+@mixin playfair {
+   font-family: 'Playfair Display', serif;
+   font-weight: 400;
+}
+
+.playfair{
+    @include playfair;
+}
+
+@mixin playfair-italic {
+   font-family: 'Playfair Display', serif;
+   font-weight: 400;
+   font-style: italic;
+
+}
+
+.playfair-italic{
+    @include playfair-italic;
+}

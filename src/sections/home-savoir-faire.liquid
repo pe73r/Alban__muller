@@ -1,0 +1,51 @@
+<section id="section-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="savoir-faire">
+
+ <div class="container-large">
+    <div class="grid">
+      <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true }'>
+        <div class="carousel-cell">
+          <div class="1/3--lap-and-up grid__cell">
+            <h2 class="monserrat">{{ section.settings.title}}</h2>
+            <h2 class="monserrat-bold">{{ section.settings.title}}</h2>
+            <h2 class="monserrat-light">{{ section.settings.title}}</h2>
+          </div>
+      </div>
+      <div class="carousel-cell">
+      <div class="1/3--lap-and-up grid__cell">
+        <h2 class="mukta">{{ section.settings.title}}</h2>
+        <h2 class="playfair">{{ section.settings.title}}</h2>
+        <h2 class="playfair-italic">{{ section.settings.title}}</h2>
+      </div>
+    </div>
+      <div class="1/3--lap-and-up grid__cell">
+        <h2 class="mukta">{{ section.settings.title}}</h2>
+        <h2 class="playfair">{{ section.settings.title}}</h2>
+        <h2 class="playfair-italic">{{ section.settings.title}}</h2>
+      </div>
+    </div>
+  </div>
+
+
+ </div>
+
+</section>
+{% schema %}
+{
+  "name": "Home-savoir-faire",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "title",
+      "default": "Lorem ipsum dolor sit amet"
+    }
+
+  ],
+  "presets": [
+      {
+        "name": "Home savoir faire",
+        "category": "Homepage"
+      }
+    ]
+}
+{% endschema %}
