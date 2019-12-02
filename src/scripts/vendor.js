@@ -11,7 +11,12 @@
 /*!
  * flickity.js
  */
-// =require vendor/flickity.js 
+// =require vendor/flickity.js
+
+/*!
+ * lazyloading.js
+ */
+// =require vendor/lazyloading.js 
 
 // Attempts to preserve comments that likely contain licensing information,
 // even if the comment does not have directives such as `@license` or `/*!`.

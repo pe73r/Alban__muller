@@ -1,49 +1,113 @@
-<section id="section-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="savoir-faire">
-
- <div class="container-large">
-    <div class="grid">
-      <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true }'>
-        <div class="carousel-cell">
-          <div class="1/3--lap-and-up grid__cell">
-            <h2 class="monserrat">{{ section.settings.title}}</h2>
-            <h2 class="monserrat-bold">{{ section.settings.title}}</h2>
-            <h2 class="monserrat-light">{{ section.settings.title}}</h2>
+<section id="section--{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="savoir-faire">
+  <div class="container-full">
+     <div class="grid grid--flush">
+       <div class="1/4--lap-and-up grid__cell">
+         <div class="savoir-faire__block">
+           <div class="savoir-faire__content relative">
+               <h2 class="savoir-faire__title">{{ section.settings.title-1}}</h2>
+           </div>
+              <div class="savoir-faire__image">
+                {% include 'image' with img:section.settings.image, class: 'full-width '  %}
+              </div>
           </div>
       </div>
-      <div class="carousel-cell">
-      <div class="1/3--lap-and-up grid__cell">
-        <h2 class="mukta">{{ section.settings.title}}</h2>
-        <h2 class="playfair">{{ section.settings.title}}</h2>
-        <h2 class="playfair-italic">{{ section.settings.title}}</h2>
+      <div class="1/4--lap-and-up grid__cell">
+        <div class="savoir-faire__block">
+          <div class="savoir-faire__image">
+            {% include 'image' with img:section.settings.image-2, class: 'full-width '  %}
+          </div>
+          <div class="savoir-faire__content">
+            <h2 class="savoir-faire__title">{{ section.settings.title-2}}</h2>
+          </div>
+
+         </div>
       </div>
-    </div>
-      <div class="1/3--lap-and-up grid__cell">
-        <h2 class="mukta">{{ section.settings.title}}</h2>
-        <h2 class="playfair">{{ section.settings.title}}</h2>
-        <h2 class="playfair-italic">{{ section.settings.title}}</h2>
+      <div class="1/4--lap-and-up grid__cell">
+        <div class="savoir-faire__block">
+          <div class="savoir-faire__image">
+            {% include 'image' with img:section.settings.image-3, class: 'full-width '  %}
+          </div>
+          <div class="savoir-faire__content">
+            <h2 class="savoir-faire__title">{{ section.settings.title-3}}</h2>
+          </div>
+
+         </div>
       </div>
+      <div class="1/4--lap-and-up grid__cell">
+          <div class="savoir-faire__image">
+            {% include 'image' with img:section.settings.image-4, class: 'full-width '  %}
+          </div>
+      </div>
+
     </div>
   </div>
-
-
- </div>
-
 </section>
 {% schema %}
 {
-  "name": "Home-savoir-faire",
+  "name": "Savoir Faire",
   "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "label": "title",
-      "default": "Lorem ipsum dolor sit amet"
-    }
+      {
+        "type": "header",
+        "content": "Block 1"
+      },
+      {
+        "type": "text",
+        "id": "title-1",
+        "label": "title-1"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "image 1"
+      },
+      {
+        "type": "header",
+        "content": "Block 2"
+      },
+      {
+        "type": "text",
+        "id": "title-2",
+        "label": "title-2"
+
+      },
+      {
+        "type": "image_picker",
+        "id": "image-2",
+        "label": "image 2"
+      },
+      {
+        "type": "header",
+        "content": "Block 3"
+      },
+      {
+        "type": "text",
+        "id": "title-3",
+        "label": "title-3"
+      },
+      {
+        "type": "image_picker",
+        "id": "image-3",
+        "label": "image 3"
+      },
+      {
+        "type": "header",
+        "content": "Block 4"
+      },
+      {
+        "type": "text",
+        "id": "title-4",
+        "label": "title-4"
+      },
+      {
+        "type": "image_picker",
+        "id": "image-4",
+        "label": "image 4"
+      }
 
   ],
   "presets": [
       {
-        "name": "Home savoir faire",
+        "name": "Home Savoir Faire",
         "category": "Homepage"
       }
     ]

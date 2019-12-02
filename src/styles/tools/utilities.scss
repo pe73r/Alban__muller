@@ -1,6 +1,12 @@
 
 /*================ containers =============================*/
 
+    .container-banner{
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
     .container-full{
       width: 100%;
       max-width: 1500px;
@@ -25,6 +31,17 @@
       margin: 0 auto;
     }
 
+  @media #{$pocket}{
+    .container-banner{
+       width: 100%;
+    }
+    .container-small{
+      width: 90%;
+    }
+
+  }
+
+
 /*================ buttons =============================*/
 
     .primary__button{
@@ -33,6 +50,15 @@
       border: 1px solid $black;
       color: $black;
     }
+
+/*============== banner utils  ===========================*/
+
+    .height--50vh { height:50vh; }
+    .height--60vh { height:60vh; }
+    .height--70vh { height:70vh; }
+    .height--80vh { height:80vh; }
+    .height--90vh { height:90vh; }
+    .banner__image--full-screen {	height: 100vh; }
 
 
 /*================ Utilities =============================*/
@@ -111,6 +137,8 @@
   .absolute{
     position: absolute;
   }
+
+
 
   @media #{$pocket}{
       .desktop-only{

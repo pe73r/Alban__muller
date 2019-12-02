@@ -1,0 +1,119 @@
+/// home top-banner //
+
+.home-banner__content{
+   background-color: $white;
+   padding: 50px;
+   max-width: 444px;
+}
+
+.home-banner__image{
+   max-width: 700px;
+   margin: 0 auto;
+}
+
+.home-banner__logo{
+   max-width: 260px;
+   margin: 0 auto;
+}
+
+.home-banner__title {
+  max-width: 272px;
+  margin: 30px auto;
+   h1{
+     font-size: $font-size-banner;
+     font-weight: 800;
+     font-stretch: normal;
+     font-style: normal;
+     line-height: 0.7;
+     letter-spacing: normal;
+     color: $grey;
+     margin: 0;
+   }
+}
+
+.home-banner__text{
+  max-width: 260px;
+  margin: 0 auto;
+    p{
+      margin: 0;
+      font-size: $font-size-text;
+      font-weight: 300;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.63;
+      letter-spacing: 1.5px;
+      color: $grey;
+    }
+}
+
+.home-banner__scroll {
+  width: 70px;
+  height: 70px;
+  background-color: $white;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 50px;
+  right: 20px;
+  cursor: pointer;
+    span{
+      font-size: $font-size-mini;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      cursor: pointer;
+    }
+    svg{
+       width: 15px;
+    }
+}
+
+.scroll__text{
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, 40%);
+   text-align: center;
+}
+
+@media #{$pocket}{
+  .home-banner__content{
+     margin: 0 auto;
+     margin-top: -70px;
+     width: 90%;
+  }
+
+  .home-banner__logo{
+     max-width: 230px;
+  }
+
+  .home-banner__title {
+    margin: 20px auto;
+    h1{
+
+      line-height: 0.66;
+      letter-spacing: normal;
+    }
+  }
+}
+
+@media #{$thumb}{
+  .home-banner__content{
+     max-width: 329px;
+     padding: 30px;
+  }
+
+  .home-banner__logo{
+     max-width: 160px;
+  }
+
+
+  .home-banner__title {
+     max-width: 150px;
+     margin: 10px auto;
+    h1{
+      font-size: $font-size-heading; 
+    }
+  }
+}

@@ -1,3 +1,27 @@
-.font-test{
-  font-family: 'Montserrat', sans-serif;
+
+/// section home savoir faire //////
+
+.savoir-faire__title{
+   font-size: 30px;
+   font-weight: normal;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.33;
+   letter-spacing: normal;
+   text-align: center;
+   color: $grey;
+
+}
+
+.savoir-faire__block{
+  display: block;
+}
+
+.savoir-faire__content{
+   flex:1;
+
+}
+
+.savoir-faire__image{
+  flex: 2;
 }
