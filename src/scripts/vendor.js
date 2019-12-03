@@ -16,7 +16,12 @@
 /*!
  * lazyloading.js
  */
-// =require vendor/lazyloading.js 
+// =require vendor/lazyloading.js
+
+/*!
+ * height.js
+ */
+// =require vendor/height.js 
 
 // Attempts to preserve comments that likely contain licensing information,
 // even if the comment does not have directives such as `@license` or `/*!`.

@@ -1,0 +1,54 @@
+<section id="section--{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="footer-pictos" class="section-footer-pictos relative">
+  <div class="container-footer">
+    <div class="footer-pictos__box">
+        {% for block in section.blocks %}
+          <div class="footer-picto__block">
+            <div class="footer__picto">
+              {% if block.settings.url != blank %}
+                <img src="{{ block.settings.url | img_url: 'master' }}">
+              {% else %}
+                {% include 'image' with img:block.settings.image, class: 'full-width' %}
+              {% endif %}
+            </div>
+            <h3 class="footer-pictos__title">{{ block.settings.title }}</h3>
+          </div>
+        {% endfor %}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Footer Pictos",
+  "settings": [
+
+  ],
+  "blocks": [
+    {
+      "type": "Picto",
+      "name": "Picto block",
+      "settings": [
+         {
+           "type": "image_picker",
+           "id": "image",
+           "label": "PNG",
+           "info": "Include a png image"
+         },
+         {
+           "type": "url",
+           "id": "url",
+           "label": "SVG url",
+           "info": "Include an svg image"
+         },
+         {
+           "type": "text",
+           "id": "title",
+           "label": "title",
+           "default": "Sample text",
+           "info": "info",
+           "placeholder": "placeholder"
+         }
+      ]
+    }
+  ]
+}
+{% endschema %}

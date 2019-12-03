@@ -1,109 +1,122 @@
+<style>
+ {% for block in section.blocks %}
+   {% if block.settings.reverse %}
+     #block--{{ block.id }} .savoir-faire__block{
+       flex-direction: column-reverse;
+      }
+   {% endif %}
+ {% endfor %}
+</style>
 <section id="section--{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="savoir-faire">
   <div class="container-full">
-     <div class="grid grid--flush">
-       <div class="1/4--lap-and-up grid__cell">
-         <div class="savoir-faire__block">
-           <div class="savoir-faire__content relative">
-               <h2 class="savoir-faire__title">{{ section.settings.title-1}}</h2>
-           </div>
-              <div class="savoir-faire__image">
-                {% include 'image' with img:section.settings.image, class: 'full-width '  %}
+    <div class="grid grid--flush">
+       {% for block in section.blocks %}
+         {% if block.type == 'block-image-text' %}
+            <div class="1/4--lap-and-up grid__cell">
+              <div id="block--{{ block.id }}">
+                <div class="savoir-faire__block">
+                  <div class="savoir-faire__content relative match">
+                    <h2 class="savoir-faire__title">{{ block.settings.title}}</h2>
+                  </div>
+                  <div class="savoir-faire__image">
+                    {% include 'image' with img:block.settings.image, class: 'full-width match' %}
+                  </div>
+                </div>
               </div>
+            </div>
+          {% endif%}
+          {% if block.type == 'block-only-image' %}
+           <div class="1/4--lap-and-up grid__cell">
+             <div id="block--{{ block.id }}">
+              <div class="savoir-faire__block">
+                <div class="savoir-faire__image">
+                  {% include 'image' with img:block.settings.image, class: 'full-width'  %}
+                </div>
+              </div>
+            </div>
           </div>
-      </div>
-      <div class="1/4--lap-and-up grid__cell">
-        <div class="savoir-faire__block">
-          <div class="savoir-faire__image">
-            {% include 'image' with img:section.settings.image-2, class: 'full-width '  %}
-          </div>
-          <div class="savoir-faire__content">
-            <h2 class="savoir-faire__title">{{ section.settings.title-2}}</h2>
-          </div>
-
-         </div>
-      </div>
-      <div class="1/4--lap-and-up grid__cell">
-        <div class="savoir-faire__block">
-          <div class="savoir-faire__image">
-            {% include 'image' with img:section.settings.image-3, class: 'full-width '  %}
-          </div>
-          <div class="savoir-faire__content">
-            <h2 class="savoir-faire__title">{{ section.settings.title-3}}</h2>
-          </div>
-
-         </div>
-      </div>
-      <div class="1/4--lap-and-up grid__cell">
-          <div class="savoir-faire__image">
-            {% include 'image' with img:section.settings.image-4, class: 'full-width '  %}
-          </div>
-      </div>
-
+         {% endif %}
+      {% endfor %}
     </div>
   </div>
 </section>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous">
+</script>
+{% for block in section.blocks %}
+    <script>
+            $(function() {
+            	$('.match').matchHeight({
+                byRow: false,
+                property: 'min-height',
+                target: null,
+                remove: false
+              });
+            });
+    </script>
+{% endfor %}
 {% schema %}
 {
   "name": "Savoir Faire",
   "settings": [
-      {
-        "type": "header",
-        "content": "Block 1"
-      },
-      {
-        "type": "text",
-        "id": "title-1",
-        "label": "title-1"
-      },
-      {
-        "type": "image_picker",
-        "id": "image",
-        "label": "image 1"
-      },
-      {
-        "type": "header",
-        "content": "Block 2"
-      },
-      {
-        "type": "text",
-        "id": "title-2",
-        "label": "title-2"
+     {
+       "type": "text",
+       "id": "button-link",
+       "label": "Button",
+       "default": "Notre Savoir faire"
+     },
+     {
+       "type": "url",
+       "id": "url",
+       "label": "Button url"
+     }
+  ],
+  "blocks": [
+    {
+      "type": "block-image-text",
+      "name": "image and tetx",
+      "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "title",
+            "default": "Title"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "image"
+          },
+          {
+            "type": "checkbox",
+            "id": "only-image",
+            "label": "Only image",
+            "default": false,
+            "info": "Display only image without text"
+          },
+          {
+            "type": "checkbox",
+            "id": "reverse",
+            "label": "Reverse column",
+            "default": false
+          }
 
-      },
-      {
-        "type": "image_picker",
-        "id": "image-2",
-        "label": "image 2"
-      },
-      {
-        "type": "header",
-        "content": "Block 3"
-      },
-      {
-        "type": "text",
-        "id": "title-3",
-        "label": "title-3"
-      },
-      {
-        "type": "image_picker",
-        "id": "image-3",
-        "label": "image 3"
-      },
-      {
-        "type": "header",
-        "content": "Block 4"
-      },
-      {
-        "type": "text",
-        "id": "title-4",
-        "label": "title-4"
-      },
-      {
-        "type": "image_picker",
-        "id": "image-4",
-        "label": "image 4"
-      }
+      ]
+    },
+    {
+      "type": "block-only-image",
+      "name": "Only image",
+      "settings": [
 
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "image"
+          }
+      ]
+    }
   ],
   "presets": [
       {

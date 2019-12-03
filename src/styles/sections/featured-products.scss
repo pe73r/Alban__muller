@@ -1,0 +1,63 @@
+/// home featured-products //
+
+.featured-products{
+  margin: 80px auto;
+    a{
+       text-decoration: none;
+        color: $grey;
+    }
+    .flickity-page-dots {
+      bottom: -50px;
+    }
+    .flickity-button {
+      background: none;
+    }
+}
+
+.featured-products__image{
+   max-width: 350px;
+   margin: 0 auto;
+   margin-bottom: 50px;
+}
+
+.featured-products__title {
+  font-size: $font-size-text;
+  font-weight: 300;
+  line-height: 1.63;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin:0;
+}
+
+.featured-products__price {
+  font-size: $font-size-text;
+  font-weight: bold;
+  line-height: 1.56;
+  letter-spacing: normal;
+  margin: 5px 0 25px 0;
+}
+
+
+.collection__cards {
+  width: 33%; /* width */
+  margin-right: 10px;
+  text-align: center;
+}
+
+@media #{$pocket}{
+    .collection__cards {
+      width: 100%; /* full width */
+      margin-right: 10px;
+      text-align: center;
+    }
+    
+    .featured-products__image{
+       max-width: 225px;
+       margin-bottom: 20px;
+    }
+
+    .featured-products__price {
+      margin: 5px 0 20px 0;
+    }
+
+}

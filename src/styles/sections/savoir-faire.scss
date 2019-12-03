@@ -1,27 +1,26 @@
 
 /// section home savoir faire //////
 
+
+// class to match DIV HEIGHT ///
+.match{
+  min-height: 80px;
+ }
+
 .savoir-faire__title{
    font-size: 30px;
    font-weight: normal;
-   font-stretch: normal;
-   font-style: normal;
    line-height: 1.33;
    letter-spacing: normal;
    text-align: center;
-   color: $grey;
-
+   margin: 0;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
 }
 
 .savoir-faire__block{
-  display: block;
-}
-
-.savoir-faire__content{
-   flex:1;
-
-}
-
-.savoir-faire__image{
-  flex: 2;
+   display: flex;
+   flex-direction: column;
 }

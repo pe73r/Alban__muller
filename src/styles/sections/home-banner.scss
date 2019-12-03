@@ -26,7 +26,6 @@
      font-style: normal;
      line-height: 0.7;
      letter-spacing: normal;
-     color: $grey;
      margin: 0;
    }
 }
@@ -42,7 +41,6 @@
       font-style: normal;
       line-height: 1.63;
       letter-spacing: 1.5px;
-      color: $grey;
     }
 }
 
@@ -113,7 +111,7 @@
      max-width: 150px;
      margin: 10px auto;
     h1{
-      font-size: $font-size-heading; 
+       font-size: $font-size-heading;
     }
   }
 }

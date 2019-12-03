@@ -1,0 +1,35 @@
+
+/// footer pictos ///
+.section-footer-pictos {
+  margin: 40px 0 80px 0;
+}
+
+.footer-pictos__box{
+   display: flex;
+   justify-content: center;
+   align-items: baseline;
+   width: 90%;
+}
+
+.footer-picto__block{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+    &:not(:last-child){
+      margin-right: 60px;
+    }
+}
+
+.footer__picto{
+   width: 65px;
+   margin: 0 auto;
+   margin-bottom: 15px;
+}
+
+.footer-pictos__title{
+  font-size: $font-size-text;
+  font-weight: 400;
+  line-height: 1.63;
+  letter-spacing: normal;
+  text-align: center;
+}

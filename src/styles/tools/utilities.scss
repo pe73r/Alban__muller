@@ -7,9 +7,14 @@
       margin: 0 auto;
     }
 
+    .container-footer{
+      width: 80%;
+      max-width: 1200px;
+      float: right;
+    }
+
     .container-full{
       width: 100%;
-      max-width: 1500px;
       margin: 0 auto;
     }
 
@@ -44,11 +49,26 @@
 
 /*================ buttons =============================*/
 
-    .primary__button{
+    .button-primary{
       padding: 10px 60px;
       background-color: inherit;
       border: 1px solid $black;
       color: $black;
+    }
+
+    .button-secondary{
+      font-size:  $font-size-mini;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.64;
+      letter-spacing: 1.75px;
+      text-align: center;
+      color: $grey;
+      border: none;
+      border-bottom: 2px solid $lightgrey;
+      text-transform: uppercase;
+      background-color: transparent;
     }
 
 /*============== banner utils  ===========================*/
@@ -137,8 +157,6 @@
   .absolute{
     position: absolute;
   }
-
-
 
   @media #{$pocket}{
       .desktop-only{
