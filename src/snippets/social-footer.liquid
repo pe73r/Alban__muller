@@ -1,0 +1,39 @@
+<div class="mobile-only">
+  <ul class="footer-social__icons ">
+    {%- if settings.social_facebook_link != blank -%}
+     <li>
+       <a class="social-icons__link" href="{{ settings.social_facebook_link | escape }}" aria-describedby="a11y-external-message">
+         {%- include 'icon-facebook' -%}
+       </a>
+     </li>
+   {%- endif -%}
+   {%- if settings.social_twitter_link != blank -%}
+     <li>
+       <a class="social-icons__link" href="{{ settings.social_twitter_link | escape }}" aria-describedby="a11y-external-message">
+         {%- include 'icon-twitter' -%}
+       </a>
+     </li>
+   {%- endif -%}
+   {%- if settings.social_linkdin_link != blank -%}
+       <li>
+         <a class="social-icons__link" href="{{ settings.social_linkdin_link | escape }}" aria-describedby="a11y-external-message">
+         {%- include 'icon-linkdin' -%}
+         </a>
+       </li>
+   {%- endif -%}
+   {%- if settings.social_youtube_link != blank -%}
+       <li>
+         <a class="social-icons__link" href="{{ settings.social_youtube_link | escape }}" aria-describedby="a11y-external-message">
+         {%- include 'icon-youtube' -%}
+         </a>
+       </li>
+   {%- endif -%}
+   {%- if settings.social_instagram_link != blank -%}
+     <li>
+       <a class="social-icons__link" href="{{ settings.social_instagram_link | escape }}" aria-describedby="a11y-external-message">
+         {%- include 'icon-instagram' -%}
+       </a>
+     </li>
+   {%- endif -%}
+  </ul>
+</div>

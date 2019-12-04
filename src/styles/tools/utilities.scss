@@ -9,7 +9,7 @@
 
     .container-footer{
       width: 80%;
-      max-width: 1200px;
+      max-width: 1400px;
       float: right;
     }
 
@@ -43,17 +43,26 @@
     .container-small{
       width: 90%;
     }
-
+    .container-footer{
+      width: 90%;
+    }
   }
 
 
 /*================ buttons =============================*/
 
     .button-primary{
-      padding: 10px 60px;
+      width: 180px;
+      padding: 10px 30px;
+      margin: 0 auto;
       background-color: inherit;
-      border: 1px solid $black;
-      color: $black;
+      border: 1px solid $grey;
+      font-size: $font-size-mini;
+      cursor: pointer;
+       a{
+          text-decoration: none;
+          color: $grey;
+       }
     }
 
     .button-secondary{
@@ -124,7 +133,7 @@
   }
 
   .text-initial{
-      text-transform: initial;
+    text-transform: initial;
   }
 
   .block{
