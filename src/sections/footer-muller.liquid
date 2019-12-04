@@ -1,25 +1,190 @@
+{%- assign social_icons = false -%}
+{%- assign inline_list = false -%}
+
+{%- if
+    settings.social_twitter_link != blank
+    or settings.social_facebook_link != blank
+    or settings.social_pinterest_link != blank
+    or settings.social_instagram_link != blank
+    or settings.social_tumblr_link != blank
+    or settings.social_snapchat_link != blank
+    or settings.social_youtube_link != blank
+    or settings.social_vimeo_link != blank
+    or template.name == 'article'
+    or template.name == 'blog'
+-%}
+  {%- assign social_icons = true -%}
+{%- endif -%}
+<style >
+  .social-icons__link svg{
+    fill: {{ section.settings.picto-color }}
+   }
+
+</style>
 <footer>
+  <div class="container-footer">
+    <div class="footer__newsletter">
+      <h3 class="newsletter__title">{{ section.settings.newsletter-title }}</h3>
+      {%- assign formId = 'ContactFooter' -%}
+        {% form 'customer', id: formId, novalidate: 'novalidate', class: 'footer-form '%}
+            {%- if form.posted_successfully? -%}
+              <p class="form-message form-message--success" tabindex="-1" data-form-status>
+              {{ 'general.newsletter_form.confirmation' | t }}
+              </p>
+            {%- endif -%}
+            <input type="hidden" name="contact[tags]" value="newsletter">
+              <div class="{% if form.errors %} input-group--error{% endif %} footer__form">
+                  <div class="footer__input">
+                     <input type="email"
+                       name="contact[email]"
+                       id="{{ formId }}-email"
+                       class="input__text {% if form.errors %} input--error{% endif %}"
+                       value="{{ form.email }}"
+                       placeholder="Votre email"
+                       aria-label="{{ 'general.newsletter_form.email_placeholder' | t }}"
+                       aria-required="true"
+                       required
+                       autocorrect="off"
+                       autocapitalize="off"
+                       {% if form.errors %}
+                         aria-invalid="true"
+                         aria-describedby="{{ formId }}-email-error"
+                         data-form-status
+                       {% endif %}>
+                  </div>
+                  <div class="">
+                    <span class="input-group__btn">
+                      <button type="submit" class="footer-newsletter__submit" name="commit" id="Subscribe">
+                       <span class="newsletter__submit-text--large">ENVOYER</span>
+                      </button>
+                    </span>
+                  </div>
+                </div>
+              {% if form.errors contains 'email' %}
+                <span id="{{ formId }}-email-error" class="input-error-message">
+                  {% include 'icon-error' %} {{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}.
+                </span>
+              {% endif %}
+          {% endform %}
+    </div>
+    <div class="footer__box">
+      <div class="grid">
+        {% for block in section.blocks limit: 3 %}
+          {% case block.type %}
+            {%- when 'menu' -%}
+              <div class="1/4--lap-and-up grid__cell">
+                <h4 class="footer__title">{{ block.settings.title }}</h4>
+                {%- assign footer_linklist = block.settings.footer_linklist -%}
+                {% if linklists[footer_linklist].links.size > 0 %}
+                  <ul class="footer__linklist">
+                    {% for link in linklists[footer_linklist].links %}
+                      <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              </div>
+           {%- when 'social' -%}
+             <div class="2/4--lap-and-up grid__cell">
+               <h4 class="footer__title">{{ block.settings.title }}</h4>
+                {%- if social_icons -%}
+                 <ul class="footer-social__icons">
+                   {%- if settings.social_facebook_link != blank -%}
+                    <li>
+                      <a class="social-icons__link" href="{{ settings.social_facebook_link | escape }}" aria-describedby="a11y-external-message">
+                        {%- include 'icon-facebook' -%}
+                      </a>
+                    </li>
+                  {%- endif -%}
+                  {%- if settings.social_twitter_link != blank -%}
+                    <li>
+                      <a class="social-icons__link" href="{{ settings.social_twitter_link | escape }}" aria-describedby="a11y-external-message">
+                        {%- include 'icon-twitter' -%}
+                      </a>
+                    </li>
+                  {%- endif -%}
+                  {%- if settings.social_linkdin_link != blank -%}
+                      <li>
+                        <a class="social-icons__link" href="{{ settings.social_linkdin_link | escape }}" aria-describedby="a11y-external-message">
+                        {%- include 'icon-linkdin' -%}
+                        </a>
+                      </li>
+                  {%- endif -%}
+                  {%- if settings.social_youtube_link != blank -%}
+                      <li>
+                        <a class="social-icons__link" href="{{ settings.social_youtube_link | escape }}" aria-describedby="a11y-external-message">
+                        {%- include 'icon-youtube' -%}
+                        </a>
+                      </li>
+                  {%- endif -%}
+                  {%- if settings.social_instagram_link != blank -%}
+                    <li>
+                      <a class="social-icons__link" href="{{ settings.social_instagram_link | escape }}" aria-describedby="a11y-external-message">
+                        {%- include 'icon-instagram' -%}
+                      </a>
+                    </li>
+                  {%- endif -%}
 
-  {%- assign footer_linklist = section.settings.footer_linklist -%}
-  {% if linklists[footer_linklist].links.size > 0 %}
-    <ul>
-      {% for link in linklists[footer_linklist].links %}
-        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-      {% endfor %}
-    </ul>
-  {% endif %} 
-
+                 </ul>
+                {% endif %}
+             </div>
+          {% endcase %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
 </footer>
-
 {% schema %}
   {
     "name": "Footer",
     "settings": [
+       {
+         "type": "text",
+         "id": "newsletter-title",
+         "label": "Newsletter title",
+         "default": "Restez informé"
+       },
+       {
+         "type": "color",
+         "id": "picto-color",
+         "label": "picto-color",
+         "default": "#ededed"
+       }
+
+    ],
+    "blocks": [
       {
-        "type": "link_list",
-        "id": "footer_linklist",
-        "label": "First menu",
-        "default": "footer"
+        "type": "menu",
+        "limit": 2,
+        "name": "Block Menu",
+        "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "title",
+          "default": "menu title"
+        },
+        {
+          "type": "link_list",
+          "id": "footer_linklist",
+          "label": "First menu",
+          "default": "footer"
+        }
+
+        ]
+      },
+      {
+      "type": "social",
+      "limit": 1,
+      "name": "social",
+      "limit": 1,
+      "settings": [
+            {
+              "type": "text",
+              "id": "title",
+              "label": "title",
+              "default": "social"
+            }
+       ]
       }
     ]
   }
