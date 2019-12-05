@@ -1,0 +1,101 @@
+<style>
+ {% for block in section.blocks %}
+   {% if block.settings.reverse %}
+    #block--{{ block.id }} .savoir-faire__block{
+     flex-direction: column-reverse;
+    }
+   {% endif %}
+ {% endfor %}
+</style>
+<section id="section--{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="savoir-faire" class="section-savoir-faire">
+  <div class="container-full">
+    <div class="grid grid--flush main-carousel carousel" data-flickity='{ "watchCSS": true, "pageDots": true,  "prevNextButtons": false }'>
+       {% for block in section.blocks %}
+         <div class="1/4--lap-and-up grid__cell ">
+           <div id="block--{{ block.id }}">
+             <div class="savoir-faire__block">
+              {% unless block.settings.only-image == true %}
+                <div class="savoir-faire__content desktop-only">
+                  <h2 class="savoir-faire__title">{{ block.settings.title}}</h2>
+                </div>
+              {% endunless %}
+              <div class="savoir-faire__image">
+                <div class="{% if block.settings.image-mobile != blank %} desktop-only {% endif %}">
+                 {% include 'image' with img:block.settings.image, class: 'full-width match' %}
+                </div>
+               {% if block.settings.image-mobile != blank %}
+                 {% include 'image' with img:block.settings.image-mobile, class: 'full-width match mobile-only' %}
+               {% endif %}
+              </div>
+             </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="container-button">
+       <div class="button-primary"><a href="{{ section.settings.url }}"></a>{{ section.settings.button-link}}</div>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Savoir Faire",
+  "settings": [
+     {
+       "type": "text",
+       "id": "button-link",
+       "label": "Button",
+       "default": "Notre Savoir faire"
+     },
+     {
+       "type": "url",
+       "id": "url",
+       "label": "Button url"
+     }
+  ],
+  "blocks": [
+    {
+      "type": "block-image-text",
+      "name": "image and tetx",
+      "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "title",
+            "default": "Title"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "image-mobile",
+            "label": "Image mobile"
+          },
+          {
+            "type": "checkbox",
+            "id": "only-image",
+            "label": "Only image",
+            "default": false,
+            "info": "Display only image without text"
+          },
+          {
+            "type": "checkbox",
+            "id": "reverse",
+            "label": "Reverse column",
+            "default": false
+          }
+
+      ]
+    }
+  ],
+  "presets": [
+      {
+        "name": "Home Savoir Faire",
+        "category": "Homepage"
+      }
+    ]
+}
+{% endschema %}

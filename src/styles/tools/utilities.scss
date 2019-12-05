@@ -36,6 +36,11 @@
       margin: 0 auto;
     }
 
+    .container-button{
+      margin: 50px auto;
+      text-align: center;
+    }
+
   @media #{$pocket}{
     .container-banner{
        width: 100%;
@@ -46,6 +51,10 @@
     .container-footer{
       width: 90%;
     }
+    .container-button{
+      margin: 60px auto;
+    }
+
   }
 
 
@@ -56,7 +65,7 @@
       padding: 10px 30px;
       margin: 0 auto;
       background-color: inherit;
-      border: 1px solid $grey;
+      border: 1px solid $lightgrey;
       font-size: $font-size-mini;
       cursor: pointer;
        a{

@@ -2,10 +2,12 @@
 /// section home savoir faire //////
 
 
-// class to match DIV HEIGHT ///
-.match{
-  min-height: 80px;
- }
+.savoir-faire__content{
+   width:100%;
+   padding-bottom: 100%;
+   position: relative;
+}
+
 
 .savoir-faire__title{
    font-size: 30px;
@@ -23,4 +25,34 @@
 .savoir-faire__block{
    display: flex;
    flex-direction: column;
+}
+
+.section-savoir-faire{
+
+    .grid--flush{
+     .grid__cell{
+       padding-left: 0px;
+      }
+    }
+
+    .carousel:after {
+      content: 'flickity';
+      display: none; /* hide :after */
+    }
+
+    @media screen and ( min-width: 768px ) {
+      /* disable Flickity for large devices */
+      .carousel:after {
+        content: '';
+      }
+    }
+
+  .flickity-page-dots {
+    bottom: -40px;
+
+   }
+   .flickity-page-dots .dot {
+     width: 8px;
+     height: 8px;
+   }
 }
