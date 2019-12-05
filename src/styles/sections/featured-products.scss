@@ -7,7 +7,7 @@
         color: $grey;
     }
     .flickity-page-dots {
-      bottom: -20px;
+      bottom: -35px;
     }
     .flickity-button {
       background: none;
@@ -60,4 +60,9 @@
       margin: 5px 0 20px 0;
     }
 
+    .featured-products{
+      .flickity-page-dots {
+        bottom: -35px;
+      }
+    }
 }

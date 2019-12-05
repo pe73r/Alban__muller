@@ -1,0 +1,150 @@
+/// home reviews ///
+
+
+.section-reviews{
+  padding: 50px 0;
+  .carousel:after {
+      content: 'flickity';
+      display: none; /* hide :after */
+    }
+
+    @media screen and ( min-width: 800px ) {
+      /* disable Flickity for large devices */
+      .carousel:after {
+        content: '';
+      }
+    }
+}
+
+.home-reviews__title-box{
+  text-align: center;
+  margin: 40px 0;
+}
+
+.home-reviews__title{
+   font-size: 50px;
+   font-weight: 300;
+   line-height: 1.3;
+   letter-spacing: normal;
+   text-align: center;
+   margin: 10px 0;
+}
+
+.home-reviews__subtitle{
+    max-width: 900px;
+    font-size: $font-size-text;
+    font-weight: normal;
+    line-height: 1.63;
+    letter-spacing: 1px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+
+
+.home-reviews__grid {
+  // /* Old Chrome, Safari and Opera */
+  // -webkit-column-count: 3;
+  // -webkit-column-gap: 40px;
+  // -webkit-column-rule-style: solid;
+  //
+  // /* Old Firefox */
+  // -moz-column-count: 3;
+  // -moz-column-gap: 40px;
+  // -moz-column-rule-style: solid;
+
+  /* Standard syntax */
+  column-count: 3;
+  column-gap: 40px;
+  column-rule-style: solid;
+  column-rule-width: .5px;
+
+}
+
+.reviews__stars{
+  ul{
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    li{
+       margin-right: 5px;
+    }
+  }
+  svg{
+    width: 15px;
+    height: 15px;
+  }
+
+}
+
+.review__article{
+   padding-bottom: 20px;
+}
+
+.home-reviews__article-title {
+  font-size: $font-size-text;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.63;
+  letter-spacing: normal;
+}
+
+.home-reviews__article-text {
+  font-family: 'EBGaramond', serif;
+  font-size: 50px;
+  font-weight: normal;
+  font-stretch: normal;
+  line-height: 1;
+  letter-spacing: 3px;
+}
+
+.home-reviews__image{
+
+}
+
+.home-reviews__article-name {
+  font-size: $font-size-text;
+  font-weight: normal;
+  line-height: normal;
+  letter-spacing: 1.78px;
+}
+
+.home-reviews__article-date {
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.67;
+  letter-spacing: normal;
+  color: $brown-grey;
+}
+
+@media #{$pocket}{
+   .home-reviews__grid{
+     column-count: 1;
+   }
+
+   .home-reviews__article-text  {
+      font-size: 35px;
+    }
+
+  .section-reviews{
+      padding: 30px 0;
+      .carousel-cell {
+          width: 100%; /* full width */
+         /* height of carousel */
+          margin-right: 10px;
+      }
+      .container-button{
+        margin: 20px auto;
+      }
+      .flickity-page-dots {
+        bottom: -10px;
+      }
+  }
+  .review__article{
+     border-bottom: 0;
+  }
+}

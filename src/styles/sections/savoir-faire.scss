@@ -40,7 +40,7 @@
       display: none; /* hide :after */
     }
 
-    @media screen and ( min-width: 768px ) {
+    @media screen and ( min-width: 800px ) {
       /* disable Flickity for large devices */
       .carousel:after {
         content: '';

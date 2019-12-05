@@ -32,9 +32,11 @@
         </div>
       {% endfor %}
     </div>
-    <div class="container-button">
-       <div class="button-primary"><a href="{{ section.settings.url }}"></a>{{ section.settings.button-link}}</div>
-    </div>
+    {% if section.settings.button-link != blank %}
+      <div class="container-button">
+         <div class="button-primary"><a href="{{ section.settings.url }}"></a>{{ section.settings.button-link}}</div>
+      </div>
+    {% endif %}
   </div>
 </section>
 {% schema %}
