@@ -1,0 +1,132 @@
+<style>
+  {% if section.settings.logo != blank %}
+     #section-{{ section.id }} .logo-box{
+       max-width: {{ section.settings.logo_max_width }}px;
+    }
+  {% endif %}
+</style>
+<header>
+  <div data-section-id="{{ section.id }}" id="section-{{ section.id }}" data-section-type="header-section">
+    <div class="container-header">
+     <div class="header__logo-box">
+       <a href="/"></a>
+        {% if section.settings.logo != blank %}
+          <div class="logo-box">
+            {% include 'image' with img:section.settings.logo, class: 'full-width '  %}
+          </div>
+         {% else %}
+           <h3>{{ shop.name }}</h3>
+         {% endif %}
+        </a>
+     </div>
+     <div class="menu-box">
+       <nav role="navigation">
+         <ul>
+           {% for link in linklists[section.settings.main_linklist].links %}
+             {% if link.links != blank %}
+               <li>
+                 <a href="{{ link.url }}">{{ link.title | escape }}</a>
+                 <ul>
+                   {% for childlink in link.links %}
+                     {% if childlink.links != blank %}
+                       <li>
+                         <a class="menu__link mukta" href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                         <ul>
+                           {% for grandchildlink in childlink.links %}
+                             <li>
+                               <a class="menu__link mukta" href="{{ grandchildlink.url }}">{{ grandchildlink.title | escape }}</a>
+                             </li>
+                           {% endfor %}
+                         </ul>
+                       </li>
+                     {% else %}
+                       <li>
+                         <a class="menu__link mukta" href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                       </li>
+                     {% endif %}
+                   {% endfor %}
+                 </ul>
+               </li>
+             {% else %}
+               <li>
+                 <a href="{{ link.url }}">{{ link.title | escape }}</a>
+               </li>
+             {% endif %}
+           {% endfor %}
+         </ul>
+       </nav>
+     </div>
+     <div class="cart-box">
+       <div class="cart__flex">
+         <div class="cart__user">
+           <ul>
+             {% if customer %}
+               <li>
+                 {% if customer.first_name != blank %}
+                   {% capture first_name %}<a href="/account">{{ customer.first_name }}</a>{% endcapture %}
+                   {{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }}
+                 {% else %}
+                   <a href="/account">{{ 'layout.customer.account' | t }}</a>
+                 {% endif %}
+               </li>
+               <li>
+                 {{ 'layout.customer.log_out' | t | customer_logout_link }}
+                 {%- include 'icon-user' -%}
+               </li>
+             {% else %}
+               <li>
+                
+                 {%- include 'icon-user' -%}
+               </li>
+               <li>
+                 {{ 'layout.customer.create_account' | t | customer_register_link }}
+               </li>
+             {% endif %}
+           </ul>
+         </div>
+         <div class="cart__panier">
+            <div class="">
+               <a href="/cart">
+               {% include 'icon-cart' %}
+             </div>
+             <h5 class="panier__text">Panier({{ cart.item_count }})</h5>
+           </a>
+         </div>
+
+       </div>
+
+     </div>
+
+   </div>
+  </div>
+</header>
+
+
+{% schema %}
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo image"
+      },
+      {
+        "type": "range",
+        "id": "logo_max_width",
+        "min": 50,
+        "max": 450,
+        "step": 10,
+        "unit": "px",
+        "label": "Custom logo width",
+        "default": 250
+      },
+      {
+        "type": "link_list",
+        "id": "main_linklist",
+        "label": "Menu",
+        "default": "main-menu"
+      }
+    ]
+  }
+{% endschema %}
