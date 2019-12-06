@@ -11,16 +11,21 @@
       column-rule-color: {{ section.settings.separator-color }};
     }
 
-  #section--{{ section.id }} .review__article{
-         border-bottom: 1px solid {{ section.settings.separator-color }};
-  }
-  {% if section.settings.slider %}
+  /* #section--{{ section.id }} .review__article{
+         border-bottom: 2px solid {{ section.settings.separator-color }};
+  } */
+
+   {% if section.settings.slider %}
      @media screen and (max-width: 800px) {
+       #section--{{ section.id }} .line__review{
+          border: 0;
+        }
+
         #section--{{ section.id }} .review__article{
           border-bottom: 0;
         }
      }
-  {% endif %}
+  {% endif %} 
 </style>
 <section id="section--{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="reviews">
   <div class="section-reviews">
@@ -35,33 +40,46 @@
          {% for article in blog.articles %}
            <div class="review__article carousel-cell">
              <div class="reviews__stars">
-                {% if article.tag == "star" %}
-                        <li>{%- include 'star' -%}</li>
-                    {% else %}
-                        
-                {% endif %}
-                <ul>
-                  <li>{%- include 'star' -%}</li>
-                  <li>{%- include 'star' -%}</li>
-                  <li>{%- include 'star' -%}</li>
-                  <li>{%- include 'star' -%}</li>
-                </ul>
+               <ul>
+                 {% for tag in article.tags %}
+                   {% if tag contains "star-" %}
+                    {% assign star = tag | remove: "star-" %}
+                      {% if star == "4" %}
+                         <li>{%- include 'star' -%}</li>
+                         <li>{%- include 'star' -%}</li>
+                         <li>{%- include 'star' -%}</li>
+                         <li>{%- include 'star' -%}</li>
+                       {% else %}
+                     {% endif %}
+                    {% endif%}
+                 {% endfor %}
+               </ul>
              </div>
              <div class="home-reviews__article-text {% if section.settings.italic %} italic {% endif %}">
                {{ article.metafields.article.sup-title }}
              </div>
-             <p class="home-reviews__article-name "> &#8213; {{ article.metafields.article.name }}, <span>{{ article.metafields.article.age }}</span></p>
-             {% if handle contains 'test' %}
-                <p>Shh! This is between you and us.</p>
-              {% endif %}
-             <h5 class="home-reviews__article-date">Published {{ "now" | date: "%b %d, %y" }}</h5>
+             <p class="home-reviews__article-name "> &#8213; {{ article.metafields.article.name }},<span>{{ article.metafields.article.age }}</span></p>
+             <div class="home-reviews__handle">
+               {% for tag in article.tags %}
+                 {% if tag contains "p__" %}
+                  {% assign product-handle = tag | remove: "p__"  %}
+                  {% assign product-article = all_products[product-handle] %}
+                  <h5 class="article-handle"><a href="{{ product-article.url }}">{{ product-handle }}</a></h5>
+                 {% endif %}
+                {% endfor %}
+                <h5>Published {{ "now" | date: "%b %d, %y" }}</h5>
+             </div>
              {% if article.image != blank %}
               <div class="home-reviews__image desktop-only">
                 <img src="{{ article.image | img_url: 'master' }}" alt="">
               </div>
               {% endif %}
-           </div>
-         {% endfor %}
+              <div class="relative">
+                 <div class="line__review"></div>
+              </div>
+             </div>
+              {% endfor %}
+          </div>
        </div>
      </div>
      {% if section.settings.button-link != blank %}

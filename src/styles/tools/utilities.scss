@@ -68,9 +68,15 @@
       border: 1px solid $lightgrey;
       font-size: $font-size-mini;
       cursor: pointer;
+      -webkit-transition: .5s ease-in; 
+      transition: .5s ease-in;
        a{
           text-decoration: none;
           color: $grey;
+       }
+       &:hover{
+          background-color: $black;
+          color:$white;
        }
     }
 
@@ -130,7 +136,7 @@
    .italic{
      font-style: italic;
    }
-   
+
   .position-absolute-center{
     position: absolute;
     top:50%;
