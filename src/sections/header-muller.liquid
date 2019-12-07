@@ -60,7 +60,7 @@
        <div class="cart__flex">
          <div class="cart__user">
            <ul>
-             {% if customer %}
+             {% if customer %}  
                <li>
                  {% if customer.first_name != blank %}
                    {% capture first_name %}<a href="/account">{{ customer.first_name }}</a>{% endcapture %}
@@ -75,7 +75,7 @@
                </li>
              {% else %}
                <li>
-                
+                 {{ 'layout.customer.log_in' | t | customer_login_link }}
                  {%- include 'icon-user' -%}
                </li>
                <li>
