@@ -137,6 +137,15 @@
           {% endcase %}
          {% endfor %}
       </div>
+      <div class="footer__scroll-up desktop-only">
+        <a href="#banner">
+           <div class="relative">
+             <div class="scroll-arrow">
+               {%- include 'arrow-up' -%}
+             </div>
+           </div>
+         </a>
+      </div>
     </div>
     <div class="footer__legal desktop-only">
      {%- assign footer_legal = section.settings.footer_legal -%}
@@ -153,6 +162,9 @@
        <div class="button-primary monserrat-bold"><a href="/">ACCÈS B TO B</a></div>
     </div>
     {%- include 'social-footer' -%}
+    <div class="question-box desktop-only">
+      <a class="mukta" href="#"><span>Vous avez une question ?</span></a>
+    </div>
   </div>
 </footer>
 <script>
@@ -178,7 +190,7 @@
          "id": "text-legal",
          "label": "text legal",
          "default": "© 2019 Alban Muller"
-       }, 
+       },
        {
          "type": "link_list",
          "id": "footer_legal",

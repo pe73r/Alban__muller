@@ -3,6 +3,9 @@
     "accessibility": {
       "skip_to_content": "Skip to content"
     },
+    "newsletter_form": {
+      "confirmation": "Thanks! You will hear more from us!"
+    },
     "meta": {
       "tags": "Tagged \"{{ tags }}\"",
       "page": "Page {{ page }}"

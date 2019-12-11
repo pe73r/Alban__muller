@@ -3,6 +3,9 @@
     "accessibility": {
       "skip_to_content": "Passer au contenu"
     },
+    "newsletter_form": {
+      "confirmation": "merci! Vous aurez des nouvelles très bientôt!"
+    },
     "meta": {
       "tags": "Mots clés \"{{ tags }}\"",
       "page": "Page {{ page }}"

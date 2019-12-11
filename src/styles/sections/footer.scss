@@ -1,6 +1,7 @@
 
 /// footer ////
 footer{
+  position: relative;
    ul{
      list-style: none;
      margin: 0;
@@ -71,6 +72,7 @@ footer{
 }
 
 .footer__box{
+    position: relative;
   padding: 50px 0 50px 100px;
 }
 
@@ -108,7 +110,7 @@ footer{
 }
 
 .footer__legal {
-  padding: 0 0 50px 100px;
+  padding: 0 0 30px 100px;
   font-size: $font-size-legal;
   ul{
     display: flex;
@@ -136,8 +138,51 @@ footer{
   transform: rotate(90deg);
 }
 
-@media #{$pocket}{
 
+.footer__scroll-up {
+  width: 70px;
+  height: 70px;
+  background-color: $white;
+  border-radius: 50%;
+  position: absolute;
+  border: 1px solid $grey;
+  bottom: 20px;
+  right: 3%;
+  cursor: pointer;
+    span{
+      font-size: $font-size-mini;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      cursor: pointer;
+    }
+    svg{
+       width: 15px;
+       fill: $grey;
+    }
+}
+
+.scroll-arrow {
+    text-align: center;
+    transform: translateY(25px);
+}
+
+.question-box{
+   background-color: $grey;
+   font-size: $font-size-text;
+   max-width: 300px;
+   float: right;
+   padding: 10px 35px;
+   a{
+     color: $white;
+     text-decoration: none;
+   }
+}
+
+
+@media #{$pocket}{
   .footer__newsletter {
     padding: 30px 0 30px 30px;
     flex-direction: column;

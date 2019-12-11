@@ -8,6 +8,7 @@
       }
    }
 </style>
+<a name="banner">
 <section id="section-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="home-banner">
  <div class="section-home-banner">
    <div class="container-banner relative">
@@ -36,16 +37,19 @@
         </div>
       </div>
       <div class="home-banner__scroll desktop-only">
-         <div class="relative">
-           <div class="scroll__text">
-             <span class="mukta">Down</span>
-             {%- include 'arrow-down' -%}
+        <a href="#home-text">
+           <div class="relative">
+             <div class="scroll__text">
+               <span class="mukta">Down</span>
+               {%- include 'arrow-down' -%}
+             </div>
            </div>
-         </div>
+        </a>
       </div>
     </div>
   </div>
 </section>
+</a>
 {% schema %}
 {
   "name": "Home-Banner",

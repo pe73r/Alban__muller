@@ -52,3 +52,13 @@ $(document).ready(function() {
     document.documentElement.className = document.documentElement.className.replace('supports-no-cookies', 'supports-cookies');
   }
 });
+
+/////menu toogle
+
+
+$(document).ready(function(){
+  $("#cross").click(function(){
+    $("#menu-mobile").toggle('slide');
+    $(".fadding__filter").fadeOut();
+  });
+});

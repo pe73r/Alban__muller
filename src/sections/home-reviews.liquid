@@ -7,10 +7,6 @@
       column-rule-color: {{ section.settings.separator-color }};
     }
 
-  /* #section--{{ section.id }} .review__article{
-         border-bottom: 2px solid {{ section.settings.separator-color }};
-  } */
-
    {% if section.settings.slider %}
      @media screen and (max-width: 800px) {
        #section--{{ section.id }} .line__review{
@@ -39,19 +35,15 @@
                <ul>
                  {% for tag in article.tags %}
                    {% if tag contains "star-" %}
-                    {% assign star = tag | remove: "star-" %}
-                      {% if star == "4" %}
-                         <li>{%- include 'star' -%}</li>
-                         <li>{%- include 'star' -%}</li>
-                         <li>{%- include 'star' -%}</li>
-                         <li>{%- include 'star' -%}</li>
-                       {% else %}
-                     {% endif %}
-                    {% endif%}
+                    {% assign star = tag | remove: "star-" | plus: 0 %}
+                      {% for i in(1..star)%}
+                        <li>{%- include 'star' -%}</li>
+                      {% endfor %}
+                   {% endif%}
                  {% endfor %}
                </ul>
              </div>
-             <div class="home-reviews__article-text {% for tag in article.tags %} {% if tag contains "italic" %} italic {% endif %} {% endfor %}">
+             <div class="home-reviews__article-text {% for tag in article.tags %} {% if tag contains "italic" %} italic {% elsif tag contains "font" %} playfair {% endif %} {% endfor %}">
                {{ article.metafields.article.sup-title }}
              </div>
              <p class="home-reviews__article-name "> &#8213; {{ article.metafields.article.name }},<span>{{ article.metafields.article.age }}</span></p>

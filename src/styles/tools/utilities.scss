@@ -68,7 +68,7 @@
       border: 1px solid $lightgrey;
       font-size: $font-size-mini;
       cursor: pointer;
-      -webkit-transition: .5s ease-in; 
+      -webkit-transition: .5s ease-in;
       transition: .5s ease-in;
        a{
           text-decoration: none;
@@ -107,6 +107,7 @@
 
 /*================ Utilities =============================*/
 
+  
   .align-center {
     text-align: center;
   }

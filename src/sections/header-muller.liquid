@@ -5,102 +5,113 @@
     }
   {% endif %}
 </style>
+<div class="fadding__filter"></div>
+<div id="menu-mobile" class="menu-mobile mobile-only relative">
+  {%- include 'menu-mobile' -%}
+</div>
 <header>
-  <div data-section-id="{{ section.id }}" id="section-{{ section.id }}" data-section-type="header-section">
+  <div class="header__b2b desktop-only">
+     <h5><a class="mukta" href="/">Accès B to B <span>&#8594;</span></a></h5>
+  </div>
+  <div data-section-id="{{ section.id }}" id="section-{{ section.id }}" data-section-type="header-section" class="relative">
     <div class="container-header">
+     <div class="header__hamburguer mobile-only">
+        <div id="hamburger" class="hamburguer__box">
+          <div class="hambuguer-line1"></div>
+          <div class="hambuguer-line2"></div>
+          <div class="hambuguer-line3"></div>
+        </div>
+     </div>
      <div class="header__logo-box">
        <a href="/"></a>
         {% if section.settings.logo != blank %}
           <div class="logo-box">
-            {% include 'image' with img:section.settings.logo, class: 'full-width '  %}
+            {% include 'image' with img:section.settings.logo, class: 'full-width' %}
           </div>
          {% else %}
            <h3>{{ shop.name }}</h3>
          {% endif %}
         </a>
      </div>
-     <div class="menu-box">
+     <div class="menu-box desktop-only">
        <nav role="navigation">
          <ul>
            {% for link in linklists[section.settings.main_linklist].links %}
-             {% if link.links != blank %}
-               <li>
-                 <a href="{{ link.url }}">{{ link.title | escape }}</a>
-                 <ul>
-                   {% for childlink in link.links %}
-                     {% if childlink.links != blank %}
-                       <li>
-                         <a class="menu__link mukta" href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
-                         <ul>
-                           {% for grandchildlink in childlink.links %}
-                             <li>
-                               <a class="menu__link mukta" href="{{ grandchildlink.url }}">{{ grandchildlink.title | escape }}</a>
-                             </li>
-                           {% endfor %}
-                         </ul>
-                       </li>
-                     {% else %}
-                       <li>
-                         <a class="menu__link mukta" href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
-                       </li>
-                     {% endif %}
-                   {% endfor %}
-                 </ul>
-               </li>
-             {% else %}
-               <li>
-                 <a href="{{ link.url }}">{{ link.title | escape }}</a>
-               </li>
-             {% endif %}
+             <li>
+              <a id="open-div" class="menu__link mukta open-div" href="{{ link.url }}">{{ link.title | escape }}</a>
+             </li>
            {% endfor %}
          </ul>
        </nav>
      </div>
      <div class="cart-box">
        <div class="cart__flex">
-         <div class="cart__user">
-           <ul>
-             {% if customer %}  
+         <div class="header__glass desktop-only">
+            {%- include 'icon-glass' -%}
+         </div>
+         <div class="header__user desktop-only">
+           <ul >
+             {% if customer %}
                <li>
                  {% if customer.first_name != blank %}
                    {% capture first_name %}<a href="/account">{{ customer.first_name }}</a>{% endcapture %}
                    {{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }}
                  {% else %}
-                   <a href="/account">{{ 'layout.customer.account' | t }}</a>
+                    <a href="/account">{{ 'layout.customer.account' | t }}</a>
                  {% endif %}
-               </li>
-               <li>
+              </li>
+              <li>
                  {{ 'layout.customer.log_out' | t | customer_logout_link }}
                  {%- include 'icon-user' -%}
-               </li>
-             {% else %}
-               <li>
-                 {{ 'layout.customer.log_in' | t | customer_login_link }}
-                 {%- include 'icon-user' -%}
-               </li>
-               <li>
-                 {{ 'layout.customer.create_account' | t | customer_register_link }}
-               </li>
-             {% endif %}
-           </ul>
+              </li>
+           {% else %}
+              <li>
+                {%- include 'icon-user' -%}
+              </li>
+           {% endif %}
+          </ul>
          </div>
-         <div class="cart__panier">
+         <div class="header__panier">
             <div class="">
                <a href="/cart">
-               {% include 'icon-cart' %}
+               {% include 'icon-bag' %}
              </div>
-             <h5 class="panier__text">Panier({{ cart.item_count }})</h5>
+             <h5 class="panier__text desktop-only">Panier({{ cart.item_count }})</h5>
            </a>
          </div>
-
        </div>
-
      </div>
-
    </div>
   </div>
 </header>
-
+<div id="submenu" class="menu-desk">
+    {% for childlink in link.links %}
+        {% if childlink.links != blank %}
+          <li>
+            <a class="menu__link mukta" href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+            <ul>
+              {% for grandchildlink in childlink.links %}
+                <li>
+                  <a class="menu__link mukta" href="{{ grandchildlink.url }}">{{ grandchildlink.title | escape }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </li>
+        {% else %}
+          <li>
+            <a class="menu__link mukta" href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+          </li>
+        {% endif %}
+  {% endfor %}
+</div>
+<script>
+  $(document).ready(function(){
+    $("#hamburger").click(function(){
+      $("#menu-mobile").toggle('slide');
+      $(".fadding__filter").fadeIn();
+    });
+  });
+</script>
 
 {% schema %}
   {

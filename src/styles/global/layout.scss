@@ -4,6 +4,14 @@ html {
   background-color: $color-body;
   font-family: 'Monserrat', sans-serif;
   color: $grey;
+  scroll-behavior: smooth;
+  padding-bottom: 0;
+  position: relative;
+
+}
+
+.html{
+  padding-bottom: 0;
 }
 
 .page-width {
