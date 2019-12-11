@@ -14,22 +14,29 @@
          <div class="1/4--lap-and-up grid__cell ">
            <div id="block--{{ block.id }}">
              <div class="savoir-faire__block">
-              {% unless block.settings.only-image == true %}
-                <div class="savoir-faire__content desktop-only">
-                  <h2 class="savoir-faire__title">{{ block.settings.title}}</h2>
+                {% unless block.settings.only-image == true %}
+                  <div class="savoir-faire__content desktop-only">
+                    <h2 class="savoir-faire__title">{{ block.settings.title}}</h2>
+                  </div>
+                {% endunless %}
+                <div class="savoir-faire__image">
+                  <a href="{{ block.settings.link }}">
+                    <div class="{% if block.settings.image-mobile != blank %} desktop-only {% endif %}">
+                     {% include 'image' with img:block.settings.image, class: 'full-width match' %}
+                    </div>
+                    {% if block.settings.image-mobile != blank %}
+                      {% include 'image' with img:block.settings.image-mobile, class: 'full-width match mobile-only' %}
+                    {% endif %}
+                  </a>
                 </div>
-              {% endunless %}
-              <div class="savoir-faire__image">
-                <div class="{% if block.settings.image-mobile != blank %} desktop-only {% endif %}">
-                 {% include 'image' with img:block.settings.image, class: 'full-width match' %}
-                </div>
-               {% if block.settings.image-mobile != blank %}
-                 {% include 'image' with img:block.settings.image-mobile, class: 'full-width match mobile-only' %}
-               {% endif %}
-              </div>
              </div>
           </div>
         </div>
+        {% if block.settings.title != blank %}
+          <div class="savoir-faire__content mobile-only">
+            <h2 class="savoir-faire__title">{{ block.settings.title}}</h2>
+          </div>
+        {% endif %}
       {% endfor %}
     </div>
     {% if section.settings.button-link != blank %}
@@ -88,6 +95,11 @@
             "id": "reverse",
             "label": "Reverse column",
             "default": false
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "link in image"
           }
 
       ]

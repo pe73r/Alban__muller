@@ -61,17 +61,22 @@ header{
 .logo-box{
    max-width: 300px;
    margin: 0 auto;
-   min-width: 200px;
+
 }
 
 .cart__flex{
    display: flex;
    justify-content: space-between;
    align-items: center;
+
    svg{
       width: 15px;
       height: 15px;
    }
+   svg:not(:last-child){
+     margin-right: 10px;
+    }
+
 }
 
 .menu__link{

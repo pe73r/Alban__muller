@@ -62,11 +62,9 @@
               </li>
               <li>
                  {{ 'layout.customer.log_out' | t | customer_logout_link }}
-                 {%- include 'icon-user' -%}
-              </li>
            {% else %}
               <li>
-                {%- include 'icon-user' -%}
+                <a href="/account">{%- include 'icon-user' -%}</a>
               </li>
            {% endif %}
           </ul>
@@ -84,26 +82,6 @@
    </div>
   </div>
 </header>
-<div id="submenu" class="menu-desk">
-    {% for childlink in link.links %}
-        {% if childlink.links != blank %}
-          <li>
-            <a class="menu__link mukta" href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
-            <ul>
-              {% for grandchildlink in childlink.links %}
-                <li>
-                  <a class="menu__link mukta" href="{{ grandchildlink.url }}">{{ grandchildlink.title | escape }}</a>
-                </li>
-              {% endfor %}
-            </ul>
-          </li>
-        {% else %}
-          <li>
-            <a class="menu__link mukta" href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
-          </li>
-        {% endif %}
-  {% endfor %}
-</div>
 <script>
   $(document).ready(function(){
     $("#hamburger").click(function(){
