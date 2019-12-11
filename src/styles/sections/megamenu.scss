@@ -2,94 +2,68 @@
 
 .header__submenu {
 	position: absolute;
-	margin-top: 1px;
 	top: 100%;
 	left: 0;
 	right:0;
 	width:100%;
 	background: $white;
-	color:$black;
 	padding: 0;
-	opacity: 0;
 	z-index: 9999;
 	transition: .2s;
-	height: 0px;
 	overflow: hidden;
-	.container--medium {
-		padding: 50px 0;
-	}
-	.grid--small {margin-left: -10px;}
-	.grid--small .grid__cell {padding-left: 10px;}
-	.megamenu-image .hover-image__container{line-height: 0;}
-	a{background:transparent;}
+  border: 1px solid $grey;
+  display: none;
+	margin-top: 4px;
 }
 
-.header__submenu-grid {
-	display: flex;
-	align-items: stretch;
+.container-submenu{
+	width: 90%;
+	margin: 0 auto;
+	padding: 50px 0;
 }
-
 
 .header__menu-item:hover .header__submenu {
-	opacity: 1;
-	height: auto;
+	display: block;
 }
 
-.megamenu__title {
-	cursor: default;
-	margin-bottom: 20px;
+.header__menu-link{
+	text-transform: uppercase;
+	padding-bottom: 20px;
+	 &:hover{
+		border-bottom: 3px solid $grey;
+	 }
 }
 
-.header__submenu-item {
-	margin-bottom: 5px;
-}
-.header__submenu-item:hover{
-	font-weight: bolder;
+.header__submenu-flex{
+	display: flex;
+	justify-content: center;
 }
 
-.megamenu-image__content {
-	bottom:20px;
-	left: 20px;
-	right: 20px;
-	a { color:$black; }
-	svg{fill : white;}
+.megamenu-image:not(:last-child){
+   margin-right:20px;
 }
 
-.megamenu-images__image {
-	text-align : center;
-	margin-top: 20px;
-	svg{fill: #465461;}
-	.icon{width : 7px;}
-	.secondary-title{
-		font-size: 14px;
-		// margin-top: -2px;
-		// margin-left: 3px;
-	}
-}
-.megamenu-image__title {
-	font-weight: 400;
+.header__submenu-image{
+	max-width: 300px;
 }
 
-.megamenu-linklist__custom-container {
-	border-left:1px solid lightgrey; // todo : mettre bonne couleur
-	border-right:1px solid lightgrey; // todo : mettre bonne couleur
-	width: 80%;
-	margin: auto;
-	padding-left: 15%;
-	box-sizing: border-box;
-	height: 100%;
+.header__submenu-title {
+  font-size: 15px;
+  font-weight: normal;
+  letter-spacing: 1.5px;
+  text-align: center;
+	text-transform: uppercase;
 }
 
- 
-.header__cart-count{
-	min-width: 20px;
-	height: 20px;
-	border-radius: 20px;
-	margin-left: 4px;
-	line-height: 21px;
-	vertical-align: middle;
-	font-size: 11px;
-	text-align: center;
-	display: inline-block;
-	margin-top: -2px;
+
+.header__menu-item--active {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    width: 80px;
+    height: 10px;
+    background-color: #465461;
+    transform: scaleX(0);
+    transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    transform-origin: left top;
 }

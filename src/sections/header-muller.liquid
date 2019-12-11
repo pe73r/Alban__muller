@@ -34,15 +34,11 @@
         </a>
      </div>
      <div class="menu-box desktop-only">
-       <nav role="navigation">
-         <ul>
-           {% for link in linklists[section.settings.main_linklist].links %}
-             <li>
-              <a id="open-div" class="menu__link mukta open-div" href="{{ link.url }}">{{ link.title | escape }}</a>
-             </li>
-           {% endfor %}
-         </ul>
-       </nav>
+       <nav role="navigation" class="header__navigation">
+          <ul class="header__menu-items">
+            {% include 'megamenu' with linklist : section.settings.main_linklist %}
+          </ul>
+        </nav>
      </div>
      <div class="cart-box">
        <div class="cart__flex">
@@ -116,6 +112,41 @@
         "label": "Menu",
         "default": "main-menu"
       }
-    ]
-  }
-{% endschema %}
+    ],
+
+    "blocks": [
+
+          {
+            "type": "megamenu-image",
+            "name": "megamenu-image",
+            "settings": [
+              {
+                "type": "text",
+                "id": "handle",
+                "label": "Handle du menu"
+              },
+              {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image"
+              },
+              {
+                "type": "text",
+                "id": "title",
+                "label": "Titre"
+              },
+    	        {
+                 "type":      "text",
+                 "id":        "cta",
+                 "label":     "Call to action"
+              },
+    	        {
+                 "type":      "url",
+                 "id":        "url",
+                 "label":     "Url du cta"
+              }
+            ]
+          }
+        ]
+      }
+    {% endschema %}

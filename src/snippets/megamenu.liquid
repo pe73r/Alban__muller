@@ -1,0 +1,33 @@
+{% for link in linklists[linklist].links %}
+{% assign count_mini_menu = 0 %}
+{% assign link_handle = link.title | handleize %}
+{% for block in section.blocks %}
+{% if block.settings.handle == link_handle %}
+  {% assign count_mini_menu = count_mini_menu | plus : 1 %}
+  {% endif %}
+{% endfor %}
+
+<li class="header__menu-item mukta" >
+  <a class="header__menu-link" href="{{ link.url }}">{{ link.title | escape }}</a>
+{% if count_mini_menu > 1 %}
+  <div class="header__submenu">
+    <div class="container-submenu">
+      <div class="header__submenu-flex">
+        {% for block in section.blocks %}
+        {% if block.settings.handle == link_handle %}
+        <div class="megamenu-image">
+          <a href="{{ block.settings.url }}">
+            <div class="header__submenu-image">
+              <img src="{{ block.settings.image | img_url : '600x' }}" alt="{{ block.settings.image.alt }}">
+            </div>
+            <h4 class="header__submenu-title">{{ block.settings.title }}</h4>
+          </a>
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</li>
+{% endfor %}

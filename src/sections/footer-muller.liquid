@@ -73,9 +73,9 @@
         {% for block in section.blocks limit: 3 %}
           {% case block.type %}
             {%- when 'menu' -%}
-              <div class="1/4--lap-and-up grid__cell">
+              <div data-menu-drop class="1/4--lap-and-up grid__cell">
                 <div class="footer__title-flex">
-                  <h4 data-menu-drop class="footer__title">{{ block.settings.title }}</h4>
+                  <h4 class="footer__title">{{ block.settings.title }}</h4>
                   <div class="arrow-right mobile-only">
                     {%- include 'arrow-right'-%}
                   </div>
@@ -170,9 +170,7 @@
 <script>
     $( "[data-menu-drop]" ).click(function() {
       $('[data-menu]').is(':hidden') ? $(".arrow-right").addClass('arrow-rotate') : $(".arrow-right").removeClass('arrow-rotate')
-      $( "[data-menu]" ).slideToggle( "slow", function() {
-        // Animation complete.
-      });
+      $("[data-menu]").slideToggle( "slow");
     });
 </script>
 {% schema %}

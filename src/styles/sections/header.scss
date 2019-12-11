@@ -6,6 +6,7 @@ header{
    display: flex;
    justify-content: center;
    padding: 0;
+   margin: 0;
 
    li:not(:last-child) {
     margin-right: 40px;
@@ -41,7 +42,7 @@ header{
    display: flex;
    justify-content: space-between;
    align-items: center;
-   padding: 10px 0;
+   padding-top: 10px;
    width: 95%;
    margin: 0 auto;
 }

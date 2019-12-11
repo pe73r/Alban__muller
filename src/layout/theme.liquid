@@ -70,8 +70,8 @@
 
   <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
 
-   {% if template.name == "index" %}
-
+  {% if template.name == "index" %}
+    {% section 'home-banner' %}
   {% endif%}
   {% section 'header-muller' %}
 
