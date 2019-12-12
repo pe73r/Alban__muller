@@ -56,9 +56,16 @@ $(document).ready(function() {
 /////menu toogle
 
 
+  $(document).ready(function(){
+      $("#hamburger").click(function(){
+        $("#menu-mobile").animate({width: 'toggle'});
+        $(".fadding__filter").fadeIn();
+      });
+    });
+
 $(document).ready(function(){
-  $("#cross").click(function(){
-    $("#menu-mobile").toggle('slide');
-    $(".fadding__filter").fadeOut();
-  });
+      $("#cross").click(function(){
+        $("#menu-mobile").animate({width: 'toggle'});
+        $(".fadding__filter").fadeOut();
+      });
 });

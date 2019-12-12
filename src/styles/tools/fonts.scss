@@ -77,3 +77,16 @@
 .playfair-italic{
     @include playfair-italic;
 }
+
+
+//eb garamond ///
+@import url('https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,500,500i,600,600i&display=swap');
+
+@mixin garamond {
+   font-family: 'EB Garamond', serif;
+   font-weight: 400;
+}
+
+.garamond{
+    @include garamond;
+}

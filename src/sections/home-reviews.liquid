@@ -43,7 +43,7 @@
                  {% endfor %}
                </ul>
              </div>
-             <div class="home-reviews__article-text {% for tag in article.tags %} {% if tag contains "italic" %} italic {% elsif tag contains "font" %} playfair {% endif %} {% endfor %}">
+             <div class="home-reviews__article-text {% for tag in article.tags %} {% if tag contains "italic" %} italic {% elsif tag contains "garamond" %} garamond {% endif %} {% endfor %}">
                {{ article.metafields.article.sup-title }}
              </div>
              <p class="home-reviews__article-name "> &#8213; {{ article.metafields.article.name }},<span>{{ article.metafields.article.age }}</span></p>

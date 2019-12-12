@@ -78,18 +78,11 @@
    </div>
   </div>
 </header>
-<script>
-  $(document).ready(function(){
-    $("#hamburger").click(function(){
-      $("#menu-mobile").toggle('slide');
-      $(".fadding__filter").fadeIn();
-    });
-  });
-</script>
 
 {% schema %}
   {
     "name": "Header",
+    "class": "sticky",
     "settings": [
       {
         "type": "image_picker",

@@ -4,6 +4,14 @@
 <div id="cross" class="menu-mobile__cross">
   {%- include 'icon-cross' -%}
 </div>
+<div class="menu-mobile__search">
+    <form class="relative" action="/search" method="get" role="search">
+        <div class="menu-mobile__logo-search">{% include 'icon-search' %}</div>
+        <input class="input--full menu-mobile__input--search" type="search" name="q"
+          id="Search" value="{{ search.terms | escape }}"
+          placeholder="{{ 'general.search.placeholder' | t }}">
+    </form>
+</div>
 <div class="mobile-nav">
   <nav role="navigation">
     <ul>
@@ -59,4 +67,3 @@
    </div>
    </a>
 </div>
- 

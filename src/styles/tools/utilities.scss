@@ -81,6 +81,8 @@
     }
 
     .button-secondary{
+      max-width: 180px;
+      margin: 0 auto;
       font-size:  $font-size-mini;
       font-weight: bold;
       font-stretch: normal;
@@ -107,7 +109,7 @@
 
 /*================ Utilities =============================*/
 
-  
+
   .align-center {
     text-align: center;
   }
@@ -136,6 +138,10 @@
 
    .italic{
      font-style: italic;
+   }
+
+   .bold{
+       font-weight: bold;
    }
 
   .position-absolute-center{
@@ -185,6 +191,10 @@
 
   .absolute{
     position: absolute;
+  }
+
+  .sticky{
+
   }
 
   @media #{$pocket}{

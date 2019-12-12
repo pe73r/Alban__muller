@@ -31,17 +31,50 @@
 
 .featured-products__price {
   font-size: $font-size-text;
-  font-weight: bold;
   line-height: 1.56;
   letter-spacing: normal;
   margin: 5px 0 25px 0;
 }
 
-
 .collection__cards {
   width: 33%; /* width */
   margin-right: 10px;
   text-align: center;
+}
+
+.sold-out-badge{
+    font-size: 14px;
+    font-weight: normal;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border: 1px solid #333e47;
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.sold-out-opacity{
+  opacity: .5;
+}
+
+.compared__price{
+  font-size: 12px;
+  font-weight: 400;
+  margin-left: 5px;
+}
+
+.card__percentage{
+  position: absolute;
+  top: 5px;
+  left: 0;
+  span{
+    font-size: $font-size-text;
+    line-height: 1.56;
+    padding: 5px 10px;
+    border: 1px solid $grey;
+  }
+
 }
 
 @media #{$pocket}{
