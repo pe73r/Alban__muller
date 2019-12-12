@@ -19,7 +19,7 @@
           <div id="block--{{ block.id }}" data-block-id="{{ block.id }}">
             <div class="featured-products__image">
               {% if product.featured_image != blank %}
-                {% include 'image' with img : product.featured_image, class: 'full-width home-products__image' %}
+                {% render 'image' with img : product.featured_image, class: 'full-width home-products__image' %}
               {% elsif collection.products.first != blank %}
                 {{ collection.products.first | img_url: '480x480' | img_tag: collection.title }}
               {% elsif collection == empty %}
@@ -57,7 +57,7 @@
                 <div class="button-secondary sold-out-opacity mukta">{{ 'products.product.add_to_cart' | t }}</div>
               {% endif %}
             </div>
-          </div>
+          </div> 
          </a>
        </div>
      {% endfor %}

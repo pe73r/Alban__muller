@@ -7,7 +7,7 @@
 </style>
 <div class="fadding__filter"></div>
 <div id="menu-mobile" class="menu-mobile mobile-only relative">
-  {%- include 'menu-mobile' -%}
+  {%- render 'menu-mobile' -%}
 </div>
 <header>
   <div class="header__b2b desktop-only">
@@ -26,7 +26,7 @@
        <a href="/"></a>
         {% if section.settings.logo != blank %}
           <div class="logo-box">
-            {% include 'image' with img:section.settings.logo, class: 'full-width' %}
+            {% render 'image' with img:section.settings.logo, class: 'full-width' %}
           </div>
          {% else %}
            <h3>{{ shop.name }}</h3>
@@ -36,14 +36,14 @@
      <div class="menu-box desktop-only">
        <nav role="navigation" class="header__navigation">
           <ul class="header__menu-items">
-            {% include 'megamenu' with linklist : section.settings.main_linklist %}
+            {% render 'megamenu' with linklist : section.settings.main_linklist %}
           </ul>
         </nav>
      </div>
      <div class="cart-box">
        <div class="cart__flex">
          <div class="header__glass desktop-only">
-            {%- include 'icon-glass' -%}
+            {%- render 'icon-glass' -%}
          </div>
          <div class="header__user desktop-only">
            <ul >
@@ -60,7 +60,7 @@
                  {{ 'layout.customer.log_out' | t | customer_logout_link }}
            {% else %}
               <li>
-                <a href="/account">{%- include 'icon-user' -%}</a>
+                <a href="/account">{%- render 'icon-user' -%}</a>
               </li>
            {% endif %}
           </ul>
@@ -68,7 +68,7 @@
          <div class="header__panier">
             <div class="">
                <a href="/cart">
-               {% include 'icon-bag' %}
+               {% render 'icon-bag' %}
              </div>
              <h5 class="panier__text desktop-only">Panier({{ cart.item_count }})</h5>
            </a>

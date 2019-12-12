@@ -22,10 +22,10 @@
                 <div class="savoir-faire__image">
                   <a href="{{ block.settings.link }}">
                     <div class="{% if block.settings.image-mobile != blank %} desktop-only {% endif %}">
-                     {% include 'image' with img:block.settings.image, class: 'full-width match' %}
+                     {% render 'image' with img:block.settings.image, class: 'full-width match' %}
                     </div>
                     {% if block.settings.image-mobile != blank %}
-                      {% include 'image' with img:block.settings.image-mobile, class: 'full-width match mobile-only' %}
+                      {% render 'image' with img:block.settings.image-mobile, class: 'full-width match mobile-only' %}
                     {% endif %}
                   </a>
                 </div>

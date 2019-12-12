@@ -77,7 +77,7 @@
                 <div class="footer__title-flex">
                   <h4 class="footer__title">{{ block.settings.title }}</h4>
                   <div class="arrow-right mobile-only">
-                    {%- include 'arrow-right'-%}
+                    {%- render 'arrow-right'-%}
                   </div>
                 </div>
                 {%- assign footer_linklist = block.settings.footer_linklist -%}
@@ -98,35 +98,35 @@
                    {%- if settings.social_facebook_link != blank -%}
                     <li>
                       <a class="social-icons__link" href="{{ settings.social_facebook_link | escape }}" aria-describedby="a11y-external-message">
-                        {%- include 'icon-facebook' -%}
+                        {%- render 'icon-facebook' -%}
                       </a>
                     </li>
                   {%- endif -%}
                   {%- if settings.social_twitter_link != blank -%}
                     <li>
                       <a class="social-icons__link" href="{{ settings.social_twitter_link | escape }}" aria-describedby="a11y-external-message">
-                        {%- include 'icon-twitter' -%}
+                        {%- render 'icon-twitter' -%}
                       </a>
                     </li>
                   {%- endif -%}
                   {%- if settings.social_linkdin_link != blank -%}
                       <li>
                         <a class="social-icons__link" href="{{ settings.social_linkdin_link | escape }}" aria-describedby="a11y-external-message">
-                        {%- include 'icon-linkdin' -%}
+                        {%- render 'icon-linkdin' -%}
                         </a>
                       </li>
                   {%- endif -%}
                   {%- if settings.social_youtube_link != blank -%}
                       <li>
                         <a class="social-icons__link" href="{{ settings.social_youtube_link | escape }}" aria-describedby="a11y-external-message">
-                        {%- include 'icon-youtube' -%}
+                        {%- render 'icon-youtube' -%}
                         </a>
                       </li>
                   {%- endif -%}
                   {%- if settings.social_instagram_link != blank -%}
                     <li>
                       <a class="social-icons__link" href="{{ settings.social_instagram_link | escape }}" aria-describedby="a11y-external-message">
-                        {%- include 'icon-instagram' -%}
+                        {%- render 'icon-instagram' -%}
                       </a>
                     </li>
                   {%- endif -%}
@@ -141,7 +141,7 @@
         <a href="#banner">
            <div class="relative">
              <div class="scroll-arrow">
-               {%- include 'arrow-up' -%}
+               {%- render 'arrow-up' -%}
              </div>
            </div>
          </a>
@@ -161,7 +161,7 @@
     <div class="mobile-only align-center">
        <div class="button-primary monserrat-bold"><a href="/">ACCÈS B TO B</a></div>
     </div>
-    {%- include 'social-footer' -%}
+    {%- render 'social-footer' -%}
     <div class="question-box desktop-only">
       <a class="mukta" href="#"><span>Vous avez une question ?</span></a>
     </div>

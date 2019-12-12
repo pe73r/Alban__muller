@@ -1,5 +1,14 @@
 /// home top-banner //
 
+.section-home-banner{
+  background-color: var(--container-background-color);
+  a{
+    color: $grey;
+    text-decoration: none;
+
+  }
+}
+
 .home-banner__content{
    background-color: $white;
    padding: 50px;
@@ -19,7 +28,8 @@
 .home-banner__title {
   max-width: 272px;
   margin: 30px auto;
-   h1{
+   h1, h2, div{
+     font-weight: 800;
      font-size: $font-size-banner;
      font-weight: 800;
      font-stretch: normal;
@@ -65,11 +75,7 @@
     svg{
        width: 15px;
     }
-    a{
-      color: $grey;
-      text-decoration: none;
-      
-    }
+
 }
 
 .scroll__text{

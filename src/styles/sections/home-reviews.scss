@@ -2,6 +2,7 @@
 
 
 .section-reviews{
+  background-color: var(--container-background-color, white);
   padding: 50px 0;
   .carousel:after {
       content: 'flickity';
@@ -58,7 +59,7 @@
   column-gap: 80px;
   column-rule-style: solid;
   column-rule-width: 3px;
-
+  column-rule-color: var(--content-column-color);
 }
 
 .reviews__stars{
