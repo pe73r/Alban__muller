@@ -13,23 +13,23 @@
        {% for block in section.blocks %}
          <div class="1/4--lap-and-up grid__cell ">
            <div id="block--{{ block.id }}">
-             <div class="savoir-faire__block">
+             <a href="{{ block.settings.link }}">
+              <div class="savoir-faire__block">
                 {% unless block.settings.only-image == true %}
                   <div class="savoir-faire__content desktop-only">
                     <h2 class="savoir-faire__title">{{ block.settings.title}}</h2>
                   </div>
                 {% endunless %}
                 <div class="savoir-faire__image">
-                  <a href="{{ block.settings.link }}">
                     <div class="{% if block.settings.image-mobile != blank %} desktop-only {% endif %}">
                      {% render 'image' with img:block.settings.image, class: 'full-width match' %}
                     </div>
                     {% if block.settings.image-mobile != blank %}
                       {% render 'image' with img:block.settings.image-mobile, class: 'full-width match mobile-only' %}
                     {% endif %}
-                  </a>
                 </div>
-             </div>
+              </div>
+             </a>
           </div>
         </div>
         {% if block.settings.title != blank %}

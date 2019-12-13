@@ -15,6 +15,7 @@
         content: '';
       }
     }
+
 }
 
 .home-reviews__title-box{
@@ -45,14 +46,14 @@
 
 .home-reviews__grid {
   // /* Old Chrome, Safari and Opera */
-  // -webkit-column-count: 3;
-  // -webkit-column-gap: 40px;
-  // -webkit-column-rule-style: solid;
-  //
+  -webkit-column-count: 3;
+  -webkit-column-gap: 80px;
+  -webkit-column-rule-style: solid;
+
   // /* Old Firefox */
-  // -moz-column-count: 3;
-  // -moz-column-gap: 40px;
-  // -moz-column-rule-style: solid;
+  -moz-column-count: 3;
+  -moz-column-gap: 80px;
+  -moz-column-rule-style: solid;
 
   /* Standard syntax */
   column-count: 3;

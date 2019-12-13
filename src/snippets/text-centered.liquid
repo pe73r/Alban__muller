@@ -1,0 +1,18 @@
+<style>
+  @media screen and (max-width: 800px) {
+   #block--{{ block.id }} .home-text__height{
+     height: 30vh;
+  }
+</style>
+{%- capture class_desktop -%}
+   {{ block.settings.banner_desktop_height }}
+{%- endcapture -%}
+<section id="block--{{ block.id }}" data-block-id="{{ block.id }}" data-block-type="text-centered">
+   <div class="container-small">
+     <div class="home-text__height relative {{ class_desktop }}">
+       <div class="home-text__box">
+         <div class="home-text__content monserrat-light">{{ block.settings.text }}</div>
+       </div>
+    </div>
+  </div>
+</section>

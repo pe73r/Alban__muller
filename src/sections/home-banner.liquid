@@ -50,14 +50,14 @@
            </div>
         </div>
       </div>
-      {% if section.settings.scroll_bottom %}
+      {% if section.settings.scroll_bottom_label != blank %}
         <a href="#home-text">
           <div class="home-banner__scroll desktop-only">
             <div class="relative">
               <div class="scroll__text">
-                <span class="mukta">Down</span>
+                <span class="mukta">{{ section.settings.scroll_bottom_label }}</span>
                   {%- render 'arrow-down' -%}
-                </div>
+                </div> 
               </div>
           </div>
         </a>
@@ -124,11 +124,11 @@
         "default": "<p>La nouvelle collection de soins naturels de beauté Alban Muller est à cueillir dès maintenant</p>"
       },
       {
-          "type": "checkbox",
-          "id": "scroll_bottom",
-          "label": "Scroll button",
-          "default": true,
-  		   "info": "If not set or empty, the button will not be displayed"
+        "type": "text",
+        "id": "scroll_bottom_label",
+        "label": "Scroll button text",
+        "default": "Down",
+        "info": "If not set or empty, the button will not be displayed"
       },
       {
           "type": "checkbox",

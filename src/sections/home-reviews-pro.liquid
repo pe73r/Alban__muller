@@ -31,7 +31,7 @@
              {% assign stars = "" %}
              {% assign product_title= "" %}
 
-                  {% for loop_tag in article.tags %}
+                {% for loop_tag in article.tags %}
                   	{% comment %} capture les styles {% endcomment %}
                   	{%- if loop_tag contains 'font-size'
                   		  or loop_tag contains 'font-family'
@@ -40,17 +40,15 @@
                   		  or loop_tag contains 'line-height'
                   		  or loop_tag contains 'color' -%}
                   		  	{% assign avis_style = avis_style | append: loop_tag | append: ";" %}
-                  	{%- endif -%}
 
                   	{% comment %} capture les stars {% endcomment %}
-                  	{% elsif loop_tag contains 'stars__' %}
-                  		  {% assign nbr_stars = loop_tag | remove: 'stars__' | plus: 0 %}
+                  	{% elsif loop_tag contains 'star-' %}
+                  		  {% assign nbr_stars = loop_tag | remove: 'star-' | plus: 0 %}
                   		      {%- capture stars -%}
                   		          {% for i in (1..nbr_stars) %}
-                                         {% render 'icon-star' %}
+                                         {% render 'star' %}
                   		          {% endfor %}
                   		      {%- endcapture -%}
-                      {% endif %}
 
                   	{% comment %} capture le titre {% endcomment %}
                   	{% elsif loop_tag contains 'p__' %}
@@ -60,15 +58,13 @@
                   		{% capture product_title %}
                   			<a class="avis__date" href="{{ product_url }}">{{ product_title }}</a>
                   		{% endcapture %}
-                  	{% endif %}
 
                   	{% else %}{% continue %}{% endif %}
-
-                  {% endfor %}
+                {% endfor %}
               <div class="review__article carousel-cell">
                 <div class="reviews__stars">
                 <ul>
-                  {{ stars }}
+                    <li>{{ stars }}</li>
                 </ul>
              </div>
              <div class="home-reviews__article-text {% for tag in article.tags %} {% if tag contains "italic" %} italic {% elsif tag contains "garamond" %} garamond {% endif %} {% endfor %}">
@@ -76,13 +72,7 @@
              </div>
              <p class="home-reviews__article-name "> &#8213; {{ article.metafields.article.name }},<span>{{ article.metafields.article.age }}</span></p>
              <div class="home-reviews__handle">
-               {% for tag in article.tags %}
-                 {% if tag contains "p__" %}
-                  {% assign product-handle = tag | remove: "p__"  %}
-                  {% assign product-article = all_products[product-handle] %}
-                  <h5 class="article-handle"><a href="{{ product-article.url }}">{{ product-handle }}</a></h5>
-                 {% endif %}
-                {% endfor %}
+                <h5 class="article-handle">{{ product_title }}</h5>
                 <h5>Published {{ "now" | date: "%b %d, %y" }}</h5>
              </div>
              {% if article.image != blank %}

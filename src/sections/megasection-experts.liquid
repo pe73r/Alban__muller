@@ -1,0 +1,150 @@
+{% for block in section.blocks %}
+  	{% if block.type == 'text-centered' %}
+    	{% if forloop.first %}
+    	<style>
+    	main {padding-top:0;}
+    	</style>
+    	{% endif %}
+  	{% include 'text-centered' %}
+
+  	{% elsif block.type == 'image-text' %}
+  	{% include 'image-text' %}
+
+	{% endif %}
+{% endfor %}
+
+{% schema %}
+{
+  "name": "Mega Section Experts",
+  "settings": [
+
+  ],
+  "blocks": [
+    {
+      "type": "text-centered",
+      "name": "text-centered",
+      "settings": [
+
+          {
+             "type": "select",
+             "id": "banner_desktop_height",
+             "label": "Slider height on desktop",
+             "options": [
+               {
+                "value": "height--50vh",
+                "label": "50%"
+               },
+               {
+                "value": "height--60vh",
+                "label": "60%"
+               },
+               {
+                "value": "height--70vh",
+                "label": "70%"
+               },
+               {
+                "value": "height--80vh",
+                "label": "80%"
+               },
+               {
+                "value": "height--90vh",
+                "label": "90%"
+               },
+               {
+                "value": "height--100vh",
+                "label": "Full screen"
+               }
+             ],
+             "default": "height--60vh"
+           },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "text",
+            "default": "<p>Souriez, nos experts sont filmés</p>"
+          }
+      ]
+    },
+    {
+      "type": "image-text",
+      "name": "image-text",
+      "settings": [
+          {
+            "type": "range",
+            "id": "margin",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "px",
+            "label": "margin",
+            "default": 10
+          },
+          {
+            "type": "color",
+            "id": "color",
+            "label": "background color",
+            "default": "#f4f7f9"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "title",
+            "default": "Carloie Dupont"
+          },
+          {
+            "type": "text",
+            "id": "subtitle",
+            "label": "subtitle",
+            "default": "Experte en lorem ipsum"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sed sapien sed velit luctus hendrerit sit amet nec ipsum. Maecenas in risus eget odio sodales luctus tincidunt ut nisi.</p>"
+          },
+        {
+          "type": "text",
+          "id": "cta",
+          "label": "link text",
+          "default": "Voir son portrait"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        },
+        {
+          "type": "checkbox",
+          "id": "reverse",
+          "label": "Reverse blocks",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Pop-up options"
+        },
+        {
+          "type": "checkbox",
+          "id": "cta_video",
+          "label": "The link is a video?",
+          "default": true
+        },
+        {
+          "id": "video_url",
+          "type": "video_url",
+          "label": "Video URL",
+          "accept": ["youtube", "vimeo"],
+          "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+        },
+        {
+          "type": "image_picker",
+          "id": "image-popup",
+          "label": "Image Pop-up"
+        }
+      ] 
+    }
+
+  ]
+}
+{% endschema %}
