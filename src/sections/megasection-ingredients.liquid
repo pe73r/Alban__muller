@@ -8,14 +8,14 @@
   	{% include 'text-centered' %}
 
   	{% elsif block.type == 'image-text' %}
-  	{% include 'image-text' %}
+  	{% include 'image-text-ingredients' %}
 
 	{% endif %}
 {% endfor %}
 
 {% schema %}
 {
-  "name": "Mega Section Experts",
+  "name": "Mega Section Ingredients",
   "settings": [
 
   ],
@@ -71,31 +71,31 @@
       "settings": [
           {
             "type": "range",
-            "id": "margin",
+            "id": "padding",
             "min": 0,
             "max": 100,
             "step": 1,
             "unit": "px",
-            "label": "margin",
-            "default": 10
+            "label": "padding",
+            "default": 10 
           },
           {
             "type": "color",
             "id": "color",
             "label": "background color",
-            "default": "#f4f7f9"
+            "default": "#fff"
           },
           {
             "type": "text",
             "id": "title",
             "label": "title",
-            "default": "Carloie Dupont"
+            "default": "La Spiruline"
           },
           {
             "type": "text",
             "id": "subtitle",
             "label": "subtitle",
-            "default": "Experte en lorem ipsum"
+            "default": "Anti-âge"
           },
           {
             "type": "richtext",
@@ -107,12 +107,27 @@
           "type": "text",
           "id": "cta",
           "label": "link text",
-          "default": "Voir son portrait"
+          "default": "Voir les produits qui contiennent la Padine"
         },
         {
           "type": "image_picker",
           "id": "image",
           "label": "image"
+        },
+        {
+          "type": "checkbox",
+          "id": "reverse",
+          "label": "Reverse blocks",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Pop-up options"
+        },
+        {
+          "type": "image_picker",
+          "id": "image-popup",
+          "label": "Image Pop-up"
         }
       ]
     }

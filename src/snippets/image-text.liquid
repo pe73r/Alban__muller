@@ -7,16 +7,18 @@
  {% endfor %}
 </style>
 <section id="block--{{ block.id }}" data-block-id="{{ block.id }}" data-block-type="text-centered" class="relative">
-  <div class="container-full block-image-text">
+  <div class="container-full block-image-text text-video">
      <div class="grid grid--flush grid--middle {% if block.settings.reverse %} grid--rev {% endif %}">
        <div class="1/2--lap-and-up grid__cell">
          <div class="image-text__content">
            <h2 class="image-text__title">{{ block.settings.title }}</h2>
            <h4 class="image-text__subtitle">{{ block.settings.subtitle }}</h4>
            <div class="image-text__text">{{ block.settings.text }}</div>
-           <div class="image-text__cta">
+           <div data-video-open class="image-text__cta">
             <h5>{{ block.settings.cta }}</h5>
-            <div id="cta-button" > {% render 'icon-play' %}</div>
+            {% if block.settings.cta_video %}
+              {% render 'icon-play' %}
+            {% endif %}
             </div>
          </div>
        </div>
@@ -25,25 +27,34 @@
           {% render 'image' with img : block.settings.image, class: 'full-width' %}
          {% endif %}
        </div>
-     </div> 
+     </div>
   </div>
-  <div class="image-text__popup">
-  {% if block.settings.cta-video %}
-    <iframe width="100%" height="100%" src="{{ block.settings.video_url }}{%- if section.settings.video-autoplay -%}?autoplay=1& {%- endif -%}{%-unless section.settings.controls-%};controls=0;{%-endunless-%}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-    </iframe>
-  {% else %}
-     {% if block.settings.image-popup %}
+  <div data-video-popup class="image-text__popup relative">
+    {% if block.settings.cta_video %}
+        {% assign image_video   = block.settings.image_video %}
+        {% assign slide         = block.settings.video_url %}
+        {% assign fs            = block.settings.fs %}
+        {% assign rel           = block.settings.rel %}
+        {% assign controls      = block.settings.controls %}
+        {% assign loop          = block.settings.loop %}
+
+        <div class="video">
+          {% render "video-item",
+          _img: image_video,
+          _video: slide,
+          _index: id,
+          _fs: fs,
+          _rel: rel,
+          _controls: controls,
+          _autoplay: 0,
+          _loop: loop
+          %}
+        </div>
+    {% elsif block.settings.image-popup != blank %}
       {% render 'image' with img : block.settings.image-popup, class: 'full-width' %}
-     {% endif %}
-  {% endif %}
+    {% endif %}
+    <div data-video-close class="popup-cross">
+       {% render 'popup-cross' %}
+    </div>
   </div>
 </section>
-<script>
-  $('#cta-button').on('click', function() {
-    $('#pop-up').toggle('400');
-  })
-
-  $('#close-pop').on('click', function() {
-    $('#pop-up').toggle('400');
-  })
-</script>

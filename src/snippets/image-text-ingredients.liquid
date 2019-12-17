@@ -1,0 +1,45 @@
+<style>
+ {% for block in section.blocks %}
+    #block--{{ block.id }} .block-image-text{
+      --block-background-color: {{ block.settings.color }};
+      padding: {{ block.settings.padding }}px 0;
+     }
+ {% endfor %}
+</style>
+<section id="block--{{ block.id }}" data-block-id="{{ block.id }}" data-block-type="text-centered" class="relative">
+  <div class="container-large block-image-text">
+     <div class="grid grid--large grid--middle {% if block.settings.reverse %} grid--rev {% endif %}">
+       <div class="1/2--lap-and-up grid__cell fs-0">
+         {% if block.settings.image != blank %}
+          {% render 'image' with img : block.settings.image, class: 'full-width' %}
+         {% endif %}
+       </div>
+       <div class="1/2--lap-and-up grid__cell">
+         <div class="image-text-ingredients__content">
+           <div class="relative">
+             <h2 class="image-text-ingredients__title">{{ block.settings.title }}</h2>
+             <h4 class="image-text-ingredients__subtitle">{{ block.settings.subtitle }}</h4>
+             <div data-scroll-plus class="mobile-only ingredients-cross">{% render 'icon-add' %}</div>
+             <div data-ingredients-text class="image-text-ingredients__mobile">
+               <div class="image-text-ingredients__text">{{ block.settings.text }}</div>
+               <div data-video-open class="image-text-ingredients__cta">
+                {% if block.settings.image-popup != blank %}
+                 <h5>{{ block.settings.cta }}</h5>
+                 {% render 'icon-add' %}
+                {% endif %}
+                </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+  </div>
+  <div data-video-popup class="image-text__popup relative">
+    {% if block.settings.image-popup != blank %}
+      {% render 'image' with img : block.settings.image-popup, class: 'full-width' %}
+    {% endif %}
+    <div data-video-close class="popup-cross">
+       {% render 'popup-cross' %}
+    </div>
+  </div>
+</section>

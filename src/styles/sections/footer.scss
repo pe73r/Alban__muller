@@ -208,11 +208,14 @@ footer{
    text-transform: capitalize;
  }
 
-// important toogle mobile //
  .footer__linklist{
      margin: 10px;
-     display: none;
+
  }
+
+.footer-toggle{
+  display: none;
+}
 
  .footer-form{
    width: 100%;

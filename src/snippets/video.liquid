@@ -1,3 +1,24 @@
 
-<iframe width="100%" height="100%" src="{{ block.settings.video_url }}?autoplay=1&controls=0;" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-</iframe>
+{% assign slide = block.settings.video_url %}
+  {% if slide == blank %}{% continue %}{% endif %}
+  <div class="slide" {{ block.shopify_attributes }}>
+
+    {% assign fs = block.settings.fs %}
+    {% assign rel = block.settings.rel %}
+    {% assign controls = block.settings.controls %}
+    {% assign autoplay = block.settings.autoplay %}
+    {% assign loop = block.settings.loop %}
+
+    <div class="video">
+      {% include "video-item",
+      _img: image,
+      _video: slide,
+      _index: forloop.index,
+      _fs: fs,
+      _rel: rel,
+      _controls: controls,
+      _autoplay: autoplay,
+      _loop: loop
+      %} 
+     </div>
+  </div>

@@ -73,21 +73,26 @@
         {% for block in section.blocks limit: 3 %}
           {% case block.type %}
             {%- when 'menu' -%}
-              <div data-menu-drop class="1/4--lap-and-up grid__cell">
-                <div class="footer__title-flex">
-                  <h4 class="footer__title">{{ block.settings.title }}</h4>
-                  <div class="arrow-right mobile-only">
-                    {%- render 'arrow-right'-%}
+              <div class="1/4--lap-and-up grid__cell">
+                <div class="">
+                  <div data-menu-trigger class="footer__title-flex">
+                    <h4  class="footer__title">{{ block.settings.title }}</h4>
+                    <div  class="arrow-right mobile-only">
+                      {%- render 'arrow-right'-%}
+                    </div>
                   </div>
+                  {%- assign footer_linklist = block.settings.footer_linklist -%}
+                  {% if linklists[footer_linklist].links.size > 0 %}
+                  <div data-footer-panel class="footer-toggle">
+                    <ul class="footer__linklist">
+                      {% for link in linklists[footer_linklist].links %}
+                        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                  {% endif %}
                 </div>
-                {%- assign footer_linklist = block.settings.footer_linklist -%}
-                {% if linklists[footer_linklist].links.size > 0 %}
-                  <ul data-menu class="footer__linklist">
-                    {% for link in linklists[footer_linklist].links %}
-                      <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-                    {% endfor %}
-                  </ul>
-                {% endif %}
+
               </div>
            {%- when 'social' -%}
              <div class="2/4--lap-and-up grid__cell ">
@@ -167,12 +172,6 @@
     </div>
   </div>
 </footer>
-<script>
-    $( "[data-menu-drop]" ).click(function() {
-      $('[data-menu]').is(':hidden') ? $(".arrow-right").addClass('arrow-rotate') : $(".arrow-right").removeClass('arrow-rotate')
-      $("[data-menu]").slideToggle( "slow");
-    });
-</script>
 {% schema %}
   {
     "name": "Footer",

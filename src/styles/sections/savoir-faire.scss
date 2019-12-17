@@ -6,9 +6,7 @@
    width:100%;
    padding-bottom: 100%;
    position: relative;
-   a{
-     color: $grey;
-   }
+
 }
 
 
@@ -57,5 +55,8 @@
    .flickity-page-dots .dot {
      width: 8px;
      height: 8px;
+   }
+   a{
+     color: $grey;
    }
 }
