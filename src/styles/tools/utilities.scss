@@ -57,6 +57,39 @@
 
   }
 
+/*================ titles =============================*/
+
+.page__title{
+   font-size: $font-page-heading;
+   font-weight: 500;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.67;
+   letter-spacing: normal;
+   text-align: center;
+   margin: 0;
+}
+
+.page__subtitle{
+   font-size: $font-page-heading;
+   font-weight: normal;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.67;
+   letter-spacing: normal;
+   text-align: center;
+   margin: 0;
+}
+
+@media #{$pocket}{
+  .page__title{
+     font-size: $font-size-text;
+     line-height: 1;
+  }
+  .page__subtitle{
+     font-size: $font-size-text;
+   }
+}
 
 /*================ buttons =============================*/
 
