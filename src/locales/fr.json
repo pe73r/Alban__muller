@@ -4,7 +4,12 @@
       "skip_to_content": "Passer au contenu"
     },
     "newsletter_form": {
-      "confirmation": "merci! Vous aurez des nouvelles très bientôt!"
+      "confirmation": "merci! Vous aurez des nouvelles très bientôt!",
+      "submit": "Envoyer",
+      "error": "Mauvaise adresse mail"
+    },
+    "button": {
+      "b2b": "ACCÈS B TO B"
     },
     "meta": {
       "tags": "Mots clés \"{{ tags }}\"",
@@ -45,7 +50,8 @@
       "results_for_html": "Votre recherche pour \"{{ terms }}\" a généré les résultats suivants:",
       "title": "Effectuez une recherche",
       "placeholder": "Rechercher dans la boutique",
-      "submit": "Recherche"
+      "submit": "Recherche",
+      "question": "Vous avez une question ?"
     }
   },
   "blogs": {

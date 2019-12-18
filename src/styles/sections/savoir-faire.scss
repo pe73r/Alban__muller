@@ -24,6 +24,7 @@
 
 .savoir-faire__block{
    display: flex;
+   @include display-flexbox;
    flex-direction: column;
 }
 

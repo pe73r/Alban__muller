@@ -1,9 +1,9 @@
 <div class="carousel-cell collection__thumbnails relative">
-  <div class="card__percentage">
-    {% if product.compare_at_price > product.price %}
-      <span>-{{ product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round: 2 | remove: '.0' | floor}}%</span>
-    {% endif %}
-  </div>
+ {% if product.compare_at_price > product.price %}
+    <div class="tag-button">
+        <span>-{{ product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round: 2 | remove: '.0' | floor}}%</span>
+    </div>
+  {% endif %}
   <a href="{{ product.url | within: collection }}">
    <div id="block--{{ block.id }}" data-block-id="{{ block.id }}">
      <div class="product-thumbnail__image">
@@ -41,9 +41,9 @@
                  {% endif %}
              {% endif %}</h4>
        {% if product.available %}
-         <button class="button-secondary mukta" type="button" name="button">{{ 'products.product.add_to_cart' | t }}</button>
+         <button class="button button--secondary mukta" type="button" name="button">{{ 'products.product.add_to_cart' | t }}</button>
        {% else %}
-         <div class="button-secondary sold-out-opacity mukta">{{ 'products.product.add_to_cart' | t }}</div>
+         <div class="button button--secondary sold-out-opacity mukta">{{ 'products.product.add_to_cart' | t }}</div>
        {% endif %}
      </div>
    </div>

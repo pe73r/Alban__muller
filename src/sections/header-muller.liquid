@@ -10,7 +10,7 @@
   {%- render 'menu-mobile' -%}
 </div>
 <header>
-  <div class="header__b2b desktop-only">
+  <div class="header__b2b pocket--hide">
      <h5><a class="mukta" href="/">Accès B to B <span>&#8594;</span></a></h5>
   </div>
   <div data-section-id="{{ section.id }}" id="section-{{ section.id }}" data-section-type="header-section" class="relative">
@@ -23,7 +23,7 @@
         </div>
      </div>
      <div class="header__logo-box">
-       <a href="/"></a>
+       <a href="/">
         {% if section.settings.logo != blank %}
           <div class="logo-box">
             {% render 'image' with img:section.settings.logo, class: 'full-width' %}
@@ -33,7 +33,7 @@
          {% endif %}
         </a>
      </div>
-     <div class="menu-box desktop-only">
+     <div class="menu-box pocket--hide">
        <nav role="navigation" class="header__navigation">
           <ul class="header__menu-items">
             {% render 'megamenu' with linklist : section.settings.main_linklist %}
@@ -42,10 +42,10 @@
      </div>
      <div class="cart-box">
        <div class="cart__flex">
-         <div class="header__glass desktop-only">
+         <div class="header__glass pocket--hide">
             {%- render 'icon-glass' -%}
          </div>
-         <div class="header__user desktop-only">
+         <div class="header__user pocket--hide">
            <ul >
              {% if customer %}
                <li>
@@ -70,7 +70,7 @@
                <a href="/cart">
                {% render 'icon-bag' %}
              </div>
-             <h5 class="panier__text desktop-only">Panier({{ cart.item_count }})</h5>
+             <h5 class="panier__text pocket--hide">Panier({{ cart.item_count }})</h5>
            </a>
          </div>
        </div>

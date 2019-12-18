@@ -36,6 +36,7 @@
 
 .header__submenu-flex{
 	display: flex;
+	@include display-flexbox;
 	justify-content: center;
 }
 

@@ -4,7 +4,12 @@
       "skip_to_content": "Skip to content"
     },
     "newsletter_form": {
-      "confirmation": "Thanks! You will hear more from us!"
+      "confirmation": "Thanks! You will hear more from us!",
+      "submit": "send",
+      "error": "wrong email!"
+    },
+    "button": {
+      "b2b": "ACCES B TO B"
     },
     "meta": {
       "tags": "Tagged \"{{ tags }}\"",
@@ -45,7 +50,8 @@
       "results_for_html": "Your search for \"{{ terms }}\" revealed the following:",
       "title": "Search for products on our site",
       "placeholder": "Search our store",
-      "submit": "Search"
+      "submit": "Search",
+      "question": "Do you have a question?"
     }
   },
   "blogs": {

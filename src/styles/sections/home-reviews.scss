@@ -68,6 +68,7 @@
     list-style: none;
     padding: 0;
     display: flex;
+    @include display-flexbox;
     justify-content: flex-start;
     li{
        margin-right: 5px;
@@ -82,6 +83,7 @@
 
 .review__article{
    padding: 20px 0;
+   display: inline-block;
 }
 
 .line__review{
@@ -103,7 +105,6 @@
 
 .home-reviews__article-text {
 
-  font-size: 50px;
   font-weight: normal;
   font-stretch: normal;
   line-height: 1;

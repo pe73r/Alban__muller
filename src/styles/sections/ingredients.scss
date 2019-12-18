@@ -32,6 +32,7 @@
 
 .image-text-ingredients__cta{
   display: flex;
+  @include display-flexbox;
   align-items: center;
   cursor: pointer;
   h5{

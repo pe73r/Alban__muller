@@ -106,6 +106,9 @@ $(document).ready(function() {
 
 $(document).ready(function() {
   if ($(window).width() < 800) {
+      if ($('[data-footer-panel]').is(':visible')) {
+        $(".arrow-right").addClass("arrow-rotate");
+      }
       $("[data-menu-trigger]").click(function() {
           if ($('[data-footer-panel]').is(':visible')) {
           $("[data-footer-panel]").slideUp(600);

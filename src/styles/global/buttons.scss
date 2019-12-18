@@ -1,0 +1,79 @@
+
+/*================ #Buttons ================*/
+.button {
+  @include transition(all .5s);
+  position: relative;
+  display: inline-block;
+  width: auto;
+  text-decoration: none;
+  text-align: center;
+  vertical-align: middle;
+  outline: none;
+  overflow: hidden;
+  letter-spacing: normal;
+  white-space: normal;
+  font-size: $font-size-mini;
+  cursor: pointer;
+}
+
+.button--primary{
+  width: 180px;
+  padding: 10px 30px;
+  margin: 0 auto;
+  background-color: inherit;
+  border: 1px solid $lightgrey;
+   a{
+      text-decoration: none;
+      color: $grey;
+   }
+   &:hover{
+      background-color: $black;
+      color:$white;
+   }
+}
+
+.button--secondary{
+  max-width: 180px;
+  margin: 0 auto;
+  font-size:  $font-size-mini;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.64;
+  letter-spacing: 1.75px;
+  text-align: center;
+  color: $grey;
+  border: none;
+  border-bottom: 2px solid $lightgrey;
+  text-transform: uppercase;
+  background-color: transparent;
+}
+.button--b2b{
+  margin: 30px 0;
+}
+
+.button--transparent {
+  background-color: transparent;
+  color: currentcolor;
+  border: 1px solid currentcolor;
+
+  &:not([disabled]):hover,
+  &:focus {
+    background-color: transparent;
+    color: currentcolor;
+    border-color: currentcolor;
+  }
+}
+
+
+/** TAG BUTTONS **/
+
+.tag-button {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  font-size: $font-size-text;
+  line-height: 1.56;
+  padding: 5px 10px;
+  border: 1px solid $grey;
+}

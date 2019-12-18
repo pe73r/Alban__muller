@@ -91,44 +91,27 @@
    }
 }
 
-/*================ buttons =============================*/
+.font-eb__title{
+  font-family: 'EB Garamond', serif;
+  font-size: $font-size-newsletter;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1;
+}
 
-    .button-primary{
-      width: 180px;
-      padding: 10px 30px;
-      margin: 0 auto;
-      background-color: inherit;
-      border: 1px solid $lightgrey;
-      font-size: $font-size-mini;
-      cursor: pointer;
-      -webkit-transition: .5s ease-in;
-      transition: .5s ease-in;
-       a{
-          text-decoration: none;
-          color: $grey;
-       }
-       &:hover{
-          background-color: $black;
-          color:$white;
-       }
-    }
+.font-play__title{
+  font-family: 'Playfair Display', serif;
+  font-size: $font-size-newsletter;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.21;
+  font-style: italic;
+}
 
-    .button-secondary{
-      max-width: 180px;
-      margin: 0 auto;
-      font-size:  $font-size-mini;
-      font-weight: bold;
-      font-stretch: normal;
-      font-style: normal;
-      line-height: 1.64;
-      letter-spacing: 1.75px;
-      text-align: center;
-      color: $grey;
-      border: none;
-      border-bottom: 2px solid $lightgrey;
-      text-transform: uppercase;
-      background-color: transparent;
-    }
+
+
 
 /*============== banner utils  ===========================*/
 
@@ -230,9 +213,20 @@
     position: absolute;
   }
 
-  .sticky{
 
-  }
+  //////// hide classes  //////////
+
+    @media #{$pocket}{
+      .pocket--hide {
+        display: none;
+      }
+    }
+
+    @media #{$lap-and-up}{
+      .lap-and-up--hide{
+        display: none;
+      }
+    }
 
   @media #{$pocket}{
       .desktop-only{

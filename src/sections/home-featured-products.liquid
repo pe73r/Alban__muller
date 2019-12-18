@@ -1,13 +1,4 @@
-{%- assign collection = collections[section.settings.collection] -%}
-<section id="section--{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="home-featured-products" class="featured-products">
-  <div class="container-large">
-   <div class="main-carousel carousel" data-flickity='{ "cellAlign": "left", "groupCells": true, "contain": true, "pageDots": {{ section.settings.display-dots }},  "prevNextButtons": {{ section.settings.display-arrows }}, "arrowShape": {"x0": 10,"x1": 55, "y1": 45,"x2": 60, "y2": 40,"x3": 20} }'>
-     {% for product in collection.products limit: 6 %}
-       {% render 'product-thumbnail', product: product %}
-     {% endfor %}
-   </div>
- </div>
-</section> 
+{% render 'home-featured-products' %}
 {% schema %}
 {
   "name": "Home featured products",

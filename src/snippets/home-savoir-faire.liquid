@@ -1,0 +1,48 @@
+<style>
+ {% for block in section.blocks %}
+   {% if block.settings.reverse %}
+    #block--{{ block.id }} .savoir-faire__block{
+     flex-direction: column-reverse;
+    }
+   {% endif %}
+ {% endfor %}
+</style>
+<section id="section--{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="savoir-faire" class="section-savoir-faire">
+  <div class="container-full">
+    <div class="grid grid--flush main-carousel carousel" data-flickity='{ "watchCSS": true, "pageDots": true,  "prevNextButtons": false }'>
+       {% for block in section.blocks %}
+         <div class="1/4--lap-and-up grid__cell ">
+           <div id="block--{{ block.id }}">
+             <a href="{{ block.settings.link }}">
+              <div class="savoir-faire__block">
+                {% unless block.settings.only-image == true %}
+                  <div class="savoir-faire__content pocket--hide">
+                    <h2 class="savoir-faire__title">{{ block.settings.title}}</h2>
+                  </div>
+                {% endunless %}
+                <div class="savoir-faire__image">
+                    <div class="{% if block.settings.image-mobile != blank %} pocket--hide {% endif %}">
+                     {% render 'image' with img:block.settings.image, class: 'full-width match' %}
+                    </div>
+                    {% if block.settings.image-mobile != blank %}
+                      {% render 'image' with img:block.settings.image-mobile, class: 'full-width match mobile-only' %}
+                    {% endif %}
+                </div>
+              </div>
+             </a>
+          </div>
+        </div>
+        {% if block.settings.title != blank %}
+          <div class="savoir-faire__content mobile-only">
+            <h2 class="savoir-faire__title">{{ block.settings.title}}</h2>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% if section.settings.button-link != blank %}
+      <div class="container-button">
+         <div class="button button--primary"><a href="{{ section.settings.url }}"></a>{{ section.settings.button-link}}</div>
+      </div>
+    {% endif %}
+  </div>
+</section>

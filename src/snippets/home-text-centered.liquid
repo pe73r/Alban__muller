@@ -1,0 +1,20 @@
+<style>
+  @media screen and (max-width: 800px) {
+   #section--{{ section.id }} .home-text__height{
+     height: 30vh;
+  }
+</style>
+{%- capture class_desktop -%}
+   {{ section.settings.banner_desktop_height }}
+{%- endcapture -%}
+<a name="home-text">
+  <section id="section--{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="text-centered">
+     <div class="container-small">
+       <div class="home-text__height relative {{ class_desktop }}">
+         <div class="home-text__box">
+           <div class="home-text__content monserrat-light">{{ section.settings.text }}</div>
+         </div>
+      </div>
+    </div>
+  </section>
+</a>

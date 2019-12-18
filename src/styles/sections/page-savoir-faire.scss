@@ -19,6 +19,7 @@
 @media #{$pocket}{
   .page-savoir-faire__flex{
      display: flex;
+     @include display-flexbox;
      justify-content: space-between;
      align-items: center;
      border-bottom: 1px solid $grey;
@@ -27,8 +28,11 @@
   }
 
   .page-savoir-faire__content{
-     
      margin-top: 20px;
+  }
+
+  .content-none{
+    display: none;
   }
 
   .arrow-right{

@@ -64,18 +64,6 @@
   margin-left: 5px;
 }
 
-.card__percentage{
-  position: absolute;
-  top: 5px;
-  left: 0;
-  span{
-    font-size: $font-size-text;
-    line-height: 1.56;
-    padding: 5px 10px;
-    border: 1px solid $grey;
-  }
-
-}
 
 @media #{$pocket}{
     .collection__thumbnails {

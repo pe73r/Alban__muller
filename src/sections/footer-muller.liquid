@@ -23,126 +23,130 @@
   {% endfor %}
 </style>
 <footer>
-  <div class="container-footer">
-    <div class="footer__newsletter">
-      <h3 class="newsletter__title playfair">{{ section.settings.newsletter-title }}</h3>
-      {%- assign formId = 'ContactFooter' -%}
-        {% form 'customer', id: formId, novalidate: 'novalidate', class: 'footer-form '%}
-            {%- if form.posted_successfully? -%}
-              <p class="form-message form-message--success" tabindex="-1" data-form-status>
-              {{ 'general.newsletter_form.confirmation' | t }}
-              </p>
-            {%- endif -%}
-            <input type="hidden" name="contact[tags]" value="newsletter">
-              <div class="{% if form.errors %} input-group--error{% endif %} footer__form relative">
-                  <div class="footer__input">
-                     <input type="email"
-                       name="contact[email]"
-                       id="{{ formId }}-email"
-                       class="input__text {% if form.errors %} input--error{% endif %}"
-                       value="{{ form.email }}"
-                       placeholder="Votre email"
-                       aria-label="{{ 'general.newsletter_form.email_placeholder' | t }}"
-                       aria-required="true"
-                       required
-                       autocorrect="off"
-                       autocapitalize="off"
-                       {% if form.errors %}
-                         aria-invalid="true"
-                         aria-describedby="{{ formId }}-email-error"
-                         data-form-status
-                       {% endif %}>
-                  </div>
-                  <div class="submit__box">
-                    <span class="input-group__btn">
-                      <button type="submit" class="footer-newsletter__submit" name="commit" id="Subscribe">
-                       <span class="newsletter__submit-text">Envoyer</span>
-                      </button>
-                    </span>
-                  </div>
-              </div>
-              {% if form.errors contains 'email' %}
-                <span id="{{ formId }}-email-error" class="input-error-message">
-                  <p class="form__error monserrat-bold">Wrong mail !!</p>
-                </span>
-              {% endif %}
-          {% endform %}
+  <div class="grid">
+    <div class="grid__cell 1/6 1/12--pocket">
     </div>
-    <div class="footer__box">
-      <div class="grid">
-        {% for block in section.blocks limit: 3 %}
-          {% case block.type %}
-            {%- when 'menu' -%}
-              <div class="1/4--lap-and-up grid__cell">
-                <div class="">
-                  <div data-menu-trigger class="footer__title-flex">
-                    <h4  class="footer__title">{{ block.settings.title }}</h4>
-                    <div  class="arrow-right mobile-only">
-                      {%- render 'arrow-right'-%}
+    <div class="grid__cell 5/6 11/12--pocket">
+      <div class="footer__newsletter">
+        <h3 class="font-play__title newsletter-heading">{{ section.settings.newsletter-title }}</h3>
+        {%- assign formId = 'ContactFooter' -%}
+          {% form 'customer', id: formId, novalidate: 'novalidate', class: 'footer-form '%}
+              {%- if form.posted_successfully? -%}
+                <p class="form-message form-message--success" tabindex="-1" data-form-status>
+                {{ 'general.newsletter_form.confirmation' | t }}
+                </p>
+              {%- endif -%}
+              <input type="hidden" name="contact[tags]" value="newsletter">
+                <div class="{% if form.errors %} input-group--error{% endif %} footer__form relative">
+                    <div class="footer__input">
+                       <input type="email"
+                         name="contact[email]"
+                         id="{{ formId }}-email"
+                         class="input__text {% if form.errors %} input--error{% endif %}"
+                         value="{{ form.email }}"
+                         placeholder="Votre email"
+                         aria-label="{{ 'general.newsletter_form.email_placeholder' | t }}"
+                         aria-required="true"
+                         required
+                         autocorrect="off"
+                         autocapitalize="off"
+                         {% if form.errors %}
+                           aria-invalid="true"
+                           aria-describedby="{{ formId }}-email-error"
+                           data-form-status
+                         {% endif %}>
+                    </div>
+                    <button type="submit" class="footer-submit" name="commit" id="Subscribe">
+                      <span class="newsletter__submit-text">{{ 'general.newsletter_form.submit' | t }}</span>
+                    </button>
+                    </div>
+          </div>
+          {% if form.errors contains 'email' %}
+            <span id="{{ formId }}-email-error" class="input-error-message">
+              <p class="form__error monserrat-bold">{{ 'general.newsletter_form.error' | t }}</p>
+            </span>
+          {% endif %}
+        {% endform %}
+      </div>
+    </div>
+    <div class="grid relative">
+      <div class="grid__cell 1/6 1/12--pocket">
+      </div>
+      <div class="grid__cell 5/6 11/12--pocket">
+          <div class="grid footer-box">
+            {% for block in section.blocks limit: 3 %}
+              {% case block.type %}
+                {%- when 'menu' -%}
+                  <div class="1/4--lap-and-up grid__cell">
+                    <div class="footer__menu">
+                      <div data-menu-trigger class="footer__title-flex">
+                        <h4  class="footer__title">{{ block.settings.title }}</h4>
+                        <div  class="arrow-right mobile-only">
+                          {%- render 'arrow-right'-%}
+                        </div>
+                      </div>
+                      {%- assign footer_linklist = block.settings.footer_linklist -%}
+                      {% if linklists[footer_linklist].links.size > 0 %}
+                      <div data-footer-panel class="footer-toggle">
+                        <ul class="footer__linklist">
+                          {% for link in linklists[footer_linklist].links %}
+                            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                          {% endfor %}
+                        </ul>
+                      </div>
+                      {% endif %}
                     </div>
                   </div>
-                  {%- assign footer_linklist = block.settings.footer_linklist -%}
-                  {% if linklists[footer_linklist].links.size > 0 %}
-                  <div data-footer-panel class="footer-toggle">
-                    <ul class="footer__linklist">
-                      {% for link in linklists[footer_linklist].links %}
-                        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-                      {% endfor %}
-                    </ul>
-                  </div>
-                  {% endif %}
+               {%- when 'social' -%}
+                 <div class="2/4--lap-and-up grid__cell ">
+                   <div class="pocket--hide">
+                       <h4 class="footer__title">{{ block.settings.title }}</h4>
+                    {%- if social_icons -%}
+                     <ul class="footer-social__icons">
+                       {%- if settings.social_facebook_link != blank -%}
+                        <li>
+                          <a class="social-icons__link" href="{{ settings.social_facebook_link | escape }}" aria-describedby="a11y-external-message">
+                            {%- render 'icon-facebook' -%}
+                          </a>
+                        </li>
+                      {%- endif -%}
+                      {%- if settings.social_twitter_link != blank -%}
+                        <li>
+                          <a class="social-icons__link" href="{{ settings.social_twitter_link | escape }}" aria-describedby="a11y-external-message">
+                            {%- render 'icon-twitter' -%}
+                          </a>
+                        </li>
+                      {%- endif -%}
+                      {%- if settings.social_linkdin_link != blank -%}
+                          <li>
+                            <a class="social-icons__link" href="{{ settings.social_linkdin_link | escape }}" aria-describedby="a11y-external-message">
+                            {%- render 'icon-linkdin' -%}
+                            </a>
+                          </li>
+                      {%- endif -%}
+                      {%- if settings.social_youtube_link != blank -%}
+                          <li>
+                            <a class="social-icons__link" href="{{ settings.social_youtube_link | escape }}" aria-describedby="a11y-external-message">
+                            {%- render 'icon-youtube' -%}
+                            </a>
+                          </li>
+                      {%- endif -%}
+                      {%- if settings.social_instagram_link != blank -%}
+                        <li>
+                          <a class="social-icons__link" href="{{ settings.social_instagram_link | escape }}" aria-describedby="a11y-external-message">
+                            {%- render 'icon-instagram' -%}
+                          </a>
+                        </li>
+                      {%- endif -%}
+                     </ul>
+                    {% endif %}
+                 </div>
                 </div>
-
-              </div>
-           {%- when 'social' -%}
-             <div class="2/4--lap-and-up grid__cell ">
-               <div class="desktop-only">
-                   <h4 class="footer__title">{{ block.settings.title }}</h4>
-                {%- if social_icons -%}
-                 <ul class="footer-social__icons">
-                   {%- if settings.social_facebook_link != blank -%}
-                    <li>
-                      <a class="social-icons__link" href="{{ settings.social_facebook_link | escape }}" aria-describedby="a11y-external-message">
-                        {%- render 'icon-facebook' -%}
-                      </a>
-                    </li>
-                  {%- endif -%}
-                  {%- if settings.social_twitter_link != blank -%}
-                    <li>
-                      <a class="social-icons__link" href="{{ settings.social_twitter_link | escape }}" aria-describedby="a11y-external-message">
-                        {%- render 'icon-twitter' -%}
-                      </a>
-                    </li>
-                  {%- endif -%}
-                  {%- if settings.social_linkdin_link != blank -%}
-                      <li>
-                        <a class="social-icons__link" href="{{ settings.social_linkdin_link | escape }}" aria-describedby="a11y-external-message">
-                        {%- render 'icon-linkdin' -%}
-                        </a>
-                      </li>
-                  {%- endif -%}
-                  {%- if settings.social_youtube_link != blank -%}
-                      <li>
-                        <a class="social-icons__link" href="{{ settings.social_youtube_link | escape }}" aria-describedby="a11y-external-message">
-                        {%- render 'icon-youtube' -%}
-                        </a>
-                      </li>
-                  {%- endif -%}
-                  {%- if settings.social_instagram_link != blank -%}
-                    <li>
-                      <a class="social-icons__link" href="{{ settings.social_instagram_link | escape }}" aria-describedby="a11y-external-message">
-                        {%- render 'icon-instagram' -%}
-                      </a>
-                    </li>
-                  {%- endif -%}
-                 </ul>
-                {% endif %}
-             </div>
-            </div>
-          {% endcase %}
-         {% endfor %}
+              {% endcase %}
+             {% endfor %}
+          </div>
       </div>
-      <div class="footer__scroll-up desktop-only">
+      <div class="footer__scroll-up pocket--hide">
         <a href="#banner">
            <div class="relative">
              <div class="scroll-arrow">
@@ -152,23 +156,28 @@
          </a>
       </div>
     </div>
-    <div class="footer__legal desktop-only">
-     {%- assign footer_legal = section.settings.footer_legal -%}
-      <ul>
-        <li>{{ section.settings.text-legal }}</li>
-        {% if linklists[footer_legal].links.size > 0 %}
-         {% for link in linklists[footer_legal].links %}
-           <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-         {% endfor %}
-       </ul>
-     {% endif %}
-    </div>
+    <div class="grid ">
+      <div class="grid__cell 1/6--lap-and-up">
+      </div>
+      <div class="grid__cell 5/6--lap-and-up">
+        <div class="footer__legal pocket--hide">
+           {%- assign footer_legal = section.settings.footer_legal -%}
+            <ul>
+              <li>{{ section.settings.text-legal }}</li>
+              {% if linklists[footer_legal].links.size > 0 %}
+               {% for link in linklists[footer_legal].links %}
+                 <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+               {% endfor %}
+             </ul>
+           {% endif %}
+        </div>
+      </div>
     <div class="mobile-only align-center">
-       <div class="button-primary monserrat-bold"><a href="/">ACCÈS B TO B</a></div>
+       <div class="button button--primary button--b2b monserrat-bold"><a href="/">{{ 'general.button.b2b' | t }}</a></div>
     </div>
     {%- render 'social-footer' -%}
-    <div class="question-box desktop-only">
-      <a class="mukta" href="#"><span>Vous avez une question ?</span></a>
+    <div class="question-box pocket--hide">
+      <a class="mukta" href="#"><span>{{ 'general.search.question' | t }}</span></a>
     </div>
   </div>
 </footer>
