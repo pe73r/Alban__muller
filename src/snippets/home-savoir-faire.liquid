@@ -25,7 +25,7 @@
                      {% render 'image' with img:block.settings.image, class: 'full-width match' %}
                     </div>
                     {% if block.settings.image-mobile != blank %}
-                      {% render 'image' with img:block.settings.image-mobile, class: 'full-width match mobile-only' %}
+                      {% render 'image' with img:block.settings.image-mobile, class: 'full-width match lap-and-up--hide' %}
                     {% endif %}
                 </div>
               </div>
@@ -33,7 +33,7 @@
           </div>
         </div>
         {% if block.settings.title != blank %}
-          <div class="savoir-faire__content mobile-only">
+          <div class="savoir-faire__content lap-and-up--hide">
             <h2 class="savoir-faire__title">{{ block.settings.title}}</h2>
           </div>
         {% endif %}

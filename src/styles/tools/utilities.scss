@@ -40,6 +40,9 @@
       margin: 50px auto;
       text-align: center;
     }
+    .b-bottom{
+      border-bottom: 1px solid #333e47;
+    }
 
   @media #{$pocket}{
     .container-banner{
@@ -67,7 +70,7 @@
    line-height: 1.67;
    letter-spacing: normal;
    text-align: center;
-   margin: 0;
+   margin-top: 20px;
 }
 
 .page__subtitle{
@@ -81,6 +84,16 @@
    margin: 0;
 }
 
+.page-title-secondary{
+  font-size: $font-size-heading;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: normal;
+  text-align: center;
+}
+
 @media #{$pocket}{
   .page__title{
      font-size: $font-size-text;
@@ -88,6 +101,9 @@
   }
   .page__subtitle{
      font-size: $font-size-text;
+   }
+  .page-title-secondary{
+     font-size: $font-size-heading-mobile;
    }
 }
 
@@ -186,14 +202,6 @@
     display: none;
   }
 
-  .desktop-only{
-    display: block;
-  }
-
-  .mobile-only{
-    display: none;
-  }
-
   .line-height{
     line-height: 0;
   }
@@ -213,12 +221,54 @@
     position: absolute;
   }
 
+  .arrow-rotate{
+    transition: 0.70s;
+    -webkit-transition: 0.70s;
+    -moz-transition: 0.70s;
+    -ms-transition: 0.70s;
+    -o-transition: 0.70s;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+  }
+
+
+
+  //////// breadcrumbs  //////////
+
+  .breadcrumbs-container {
+      text-align: center;
+      font-weight: 500;
+      font-size: $font-size-mini;
+      margin-top: 40px;
+      a{
+        color: $grey;
+        text-decoration: none;
+      }
+  }
+
 
   //////// hide classes  //////////
+
+  .desktop-only{
+    display: block;
+  }
+
+  .mobile-only{
+    display: none;
+  }
 
     @media #{$pocket}{
       .pocket--hide {
         display: none;
+      }
+      .desktop-only{
+        display: none !important;
+      }
+      .mobile-only{
+        display: block;
       }
     }
 
@@ -227,18 +277,3 @@
         display: none;
       }
     }
-
-  @media #{$pocket}{
-      .desktop-only{
-        display: none !important;
-      }
-      .mobile-only{
-        display: block;
-      }
-      .align-center-mobile {
-        text-align: center;
-      }
-      .align-justify-mobile {
-        text-align: justify;
-      }
-  }

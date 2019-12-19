@@ -19,7 +19,7 @@
               {% render 'image' with img:section.settings.image, class: 'full-width '  %}
             </div>
             {% if section.settings.image-mobile != blank %}
-             {% render 'image' with img:section.settings.image-mobile, class: 'full-width mobile-only'  %}
+             {% render 'image' with img:section.settings.image-mobile, class: 'full-width lap-and-up--hide'  %}
             {% endif %}
           </div>
         </div>
@@ -52,7 +52,7 @@
       </div>
       {% if section.settings.scroll_bottom_label != blank %}
         <a href="#home-text">
-          <div class="home-banner__scroll pocket--hide"> 
+          <div class="home-banner__scroll pocket--hide">
             <div class="relative">
               <div class="scroll__text">
                 <span class="mukta">{{ section.settings.scroll_bottom_label }}</span>

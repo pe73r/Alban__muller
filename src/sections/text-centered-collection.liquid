@@ -1,0 +1,47 @@
+{% render 'text-centered-collection' %}
+{% schema %}
+{
+  "name": "Text Collection",
+  "settings": [
+      {
+         "type": "select",
+         "id": "banner_desktop_height",
+         "label": "Slider height on desktop",
+         "options": [
+           {
+            "value": "height--50vh",
+            "label": "50%"
+           },
+           {
+            "value": "height--60vh",
+            "label": "60%"
+           },
+           {
+            "value": "height--70vh",
+            "label": "70%"
+           },
+           {
+            "value": "height--80vh",
+            "label": "80%"
+           },
+           {
+            "value": "height--90vh",
+            "label": "90%"
+           },
+           {
+            "value": "height--100vh",
+            "label": "Full screen"
+           }
+         ],
+         "default": "height--60vh"
+       },
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": "text",
+        "default": "<p>La beauté qui prend soin de votre confiance en vous</p>"
+      }
+
+  ]
+}
+{% endschema %}

@@ -1,12 +1,12 @@
-<section id="block--{{ block.id }}" data-block-id="{{ block.id }}" data-block-type="text-centered" class="relative">
-  <div class="container-small">
-      <div data-menu-trigger class="page-savoir-faire__flex {% if forloop.first == "true" %} border-top {% endif %}">
+<section id="block--{{ block.id }}" data-block-id="{{ block.id }}" data-block-type="text-centered-savoir-faire" class="text-savoir-faire relative">
+  <div data-toggle-container class="container-small">
+      <div  class="page-savoir-faire__flex {% if forloop.first == "true" %} border-top {% endif %} b-bottom">
         <h2 class="page__title">{{ block.settings.title }}</h2>
-        <div  class="arrow-right mobile-only">
+        <div  data-toggle-arrow class="arrow-right lap-and-up--hide {% if block.settings.display-open == true %} arrow-rotate {% endif %}">
           {%- render 'arrow-right'-%}
         </div>
       </div>
-      <div data-footer-panel class="page-savoir-faire__content {% unless block.settings.display-open == true %} content-none {% endunless %}">
+      <div data-toggle-content class="page-savoir-faire__content {% unless block.settings.display-open == true %} content-none {% endunless %}">
         <h4 class="page__subtitle">{{ block.settings.subtitle }}</h4>
         <div class="page-savoir-faire__text">{{ block.settings.text }}</div>
         <div class="page-savoir-faire__image">

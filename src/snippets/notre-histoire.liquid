@@ -1,0 +1,11 @@
+<section id="block--{{ block.id }}" data-block-id="{{ block.id }}" data-block-type="text-centered-histoire" class="text-histoire relative">
+  <div data-toggle-container class="container-medium">
+      <div class="page-savoir-faire__image">
+        {% if block.settings.image != blank %}
+          {% render 'image' with img : block.settings.image, class: 'full-width' %}
+        {% endif %}
+      </div>
+      <h2 class="page-title-secondary">{{ block.settings.title }}</h2>
+      <div class="histoire__text">{{ block.settings.text }}</div>
+  </div>
+</section>

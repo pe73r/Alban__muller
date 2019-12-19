@@ -1,10 +1,13 @@
-
+.text-savoir-faire{
+  margin-top: 50px;
+}
 
 .page-savoir-faire__text{
    max-width: 900px;
    font-size: $font-size-text;
    line-height: 1.63;
    letter-spacing: 1px;
+   margin-bottom: 40px;
 }
 
 .page-savoir-faire__image{
@@ -17,12 +20,15 @@
 }
 
 @media #{$pocket}{
+  .text-savoir-faire{
+    margin-top: 0;
+  }
+
   .page-savoir-faire__flex{
      display: flex;
      @include display-flexbox;
      justify-content: space-between;
      align-items: center;
-     border-bottom: 1px solid $grey;
      padding: 20px 0;
      position: relative;
   }

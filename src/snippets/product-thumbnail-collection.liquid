@@ -1,0 +1,51 @@
+<div class="product-thumbnail-collection relative">
+ {% if product.compare_at_price > product.price %}
+    <div class="tag-button">
+        <span>-{{ product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round: 2 | remove: '.0' | floor}}%</span>
+    </div>
+  {% endif %}
+  <a href="{{ product.url | within: collection }}">
+   <div id="section--{{ section.id }}" data-section-id="{{ section.id }}">
+     <div class="product-thumbnail__image">
+       {% if product.featured_image != blank %}
+         {% render 'image' with img : product.featured_image, class: 'full-width home-products__image' %}
+       {% elsif collection.products.first != blank %}
+         {{ collection.products.first | img_url: '480x480' | img_tag: collection.title }}
+       {% elsif collection == empty %}
+         {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+         {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+       {% endif %}
+     </div>
+     {% unless product.available %}
+       <div class="relative">
+         <span class="sold-out-badge">sold out!</span>
+       </div>
+     {% endunless %}
+     <div class="product-thumbnail__content align-center relative {% unless product.available %} sold-out-opacity {% endunless%}">
+       <h2 class="product-thumbnail__title mukta ">{{ product.title }}</h2>
+             <h4 class="product-thumbnail__price mukta">
+             {% if product.compare_at_price > product.price %}
+                 {% if product.price_varies %}
+                 {%- assign sale_price = product.price | money_without_trailing_zeros -%}
+                 {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+                 {% else %}
+                 <span class="bold">{{ product.price | money_without_trailing_zeros }}</span>
+                 <s class="compared__price">{{ product.compare_at_price | money_without_trailing_zeros }}</s>
+                 {% endif %}
+             {% else %}
+                 {% if product.price_varies %}
+                 {%- assign price = product.price | money_without_trailing_zeros -%}
+                 {{ 'products.product.from_text_html' | t: price: price }}
+                 {% else %}
+                 <span class="bold">{{ product.price | money_without_trailing_zeros }}</span>
+                 {% endif %}
+             {% endif %}</h4>
+       {% if product.available %}
+         <button class="button button--secondary mukta" type="button" name="button">{{ 'products.product.add_to_cart' | t }}</button>
+       {% else %}
+         <div class="button button--secondary sold-out-opacity mukta">{{ 'products.product.add_to_cart' | t }}</div>
+       {% endif %}
+     </div>
+   </div>
+  </a>
+</div>

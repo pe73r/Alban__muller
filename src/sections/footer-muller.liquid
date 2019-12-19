@@ -78,23 +78,23 @@
               {% case block.type %}
                 {%- when 'menu' -%}
                   <div class="1/4--lap-and-up grid__cell">
-                    <div class="footer__menu">
-                      <div data-menu-trigger class="footer__title-flex">
-                        <h4  class="footer__title">{{ block.settings.title }}</h4>
-                        <div  class="arrow-right mobile-only">
-                          {%- render 'arrow-right'-%}
+                    <div data-toggle-container class="footer__menu">
+                        <div class="footer__title-flex">
+                          <h4  class="footer__title">{{ block.settings.title }}</h4>
+                          <div  data-toggle-arrow class="arrow-right lap-and-up--hide">
+                            {%- render 'arrow-right'-%}
+                          </div>
                         </div>
-                      </div>
-                      {%- assign footer_linklist = block.settings.footer_linklist -%}
-                      {% if linklists[footer_linklist].links.size > 0 %}
-                      <div data-footer-panel class="footer-toggle">
-                        <ul class="footer__linklist">
-                          {% for link in linklists[footer_linklist].links %}
-                            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-                          {% endfor %}
-                        </ul>
-                      </div>
-                      {% endif %}
+                        {%- assign footer_linklist = block.settings.footer_linklist -%}
+                        {% if linklists[footer_linklist].links.size > 0 %}
+                        <div data-toggle-content class="footer-toggle">   
+                          <ul class="footer__linklist">
+                            {% for link in linklists[footer_linklist].links %}
+                              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                            {% endfor %}
+                          </ul>
+                        </div>
+                        {% endif %}
                     </div>
                   </div>
                {%- when 'social' -%}
@@ -147,7 +147,7 @@
           </div>
       </div>
       <div class="footer__scroll-up pocket--hide">
-        <a href="#banner">
+        <a href="#header">
            <div class="relative">
              <div class="scroll-arrow">
                {%- render 'arrow-up' -%}
@@ -172,7 +172,7 @@
            {% endif %}
         </div>
       </div>
-    <div class="mobile-only align-center">
+    <div class="lap-and-up--hide align-center">
        <div class="button button--primary button--b2b monserrat-bold"><a href="/">{{ 'general.button.b2b' | t }}</a></div>
     </div>
     {%- render 'social-footer' -%}

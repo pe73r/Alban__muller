@@ -104,25 +104,40 @@ $(document).ready(function() {
 
 ///footer__menu mobile
 
-$(document).ready(function() {
-  if ($(window).width() < 800) {
-      if ($('[data-footer-panel]').is(':visible')) {
-        $(".arrow-right").addClass("arrow-rotate");
-      }
-      $("[data-menu-trigger]").click(function() {
-          if ($('[data-footer-panel]').is(':visible')) {
-          $("[data-footer-panel]").slideUp(600);
-          $(".arrow-right").removeClass("arrow-rotate");
+// $(document).ready(function() {
+//   if ($(window).width() < 800) {
+//       if ($('[data-footer-panel]').is(':visible')) {
+//         $(".arrow-right").addClass("arrow-rotate");
+//       }
+//       $("[data-menu-trigger]").click(function() {
+//           if ($('[data-footer-panel]').is(':visible')) {
+//           $("[data-footer-panel]").slideUp(600);
+//           $(".arrow-right").removeClass("arrow-rotate");
+//         }
+//
+//         if($(this).next("[data-footer-panel]").is(':visible')) {
+//           $("[data-footer-panel]").slideUp(300);
+//           $(".arrow-right").removeClass("arrow-rotate");
+//
+//         }else {
+//           $(this).next("[data-footer-panel]").slideDown(600);
+//           $(".arrow-right").addClass("arrow-rotate");
+//                }
+//              });
+//     }
+//   });
+
+
+  $("[data-toggle-container]").on('click', function(){
+    if ($(window).width() < 800) {
+        $(this).find("[data-toggle-content]").slideToggle();
+
+        var arrow = $(this).find("[data-toggle-arrow]");
+        if ($(arrow).hasClass('arrow-rotate')) {
+            arrow.removeClass('arrow-rotate');
         }
-
-        if($(this).next("[data-footer-panel]").is(':visible')) {
-          $("[data-footer-panel]").slideUp(300);
-          $(".arrow-right").removeClass("arrow-rotate");
-
-        }else {
-          $(this).next("[data-footer-panel]").slideDown(600);
-          $(".arrow-right").addClass("arrow-rotate");
-               }
-             });
+        else {
+            arrow.addClass('arrow-rotate');
+        }
     }
-  });
+})

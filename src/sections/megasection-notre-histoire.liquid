@@ -1,0 +1,101 @@
+{% for block in section.blocks %}
+  	{% if block.type == 'text-centered' %}
+    	{% if forloop.first %}
+    	<style>
+    	main {padding-top:0;}
+    	</style>
+    	{% endif %}
+  	{% include 'text-centered' %}
+
+  	{% elsif block.type == 'image-text' %}
+  	{% include 'notre-histoire' %}
+
+	{% endif %}
+{% endfor %}
+
+{% schema %}
+{
+  "name": "Section Notre histoire",
+  "settings": [
+
+  ],
+  "blocks": [
+    {
+      "type": "text-centered",
+      "name": "text-centered",
+      "settings": [
+
+          {
+             "type": "select",
+             "id": "banner_desktop_height",
+             "label": "Slider height on desktop",
+             "options": [
+               {
+                "value": "height--50vh",
+                "label": "50%"
+               },
+               {
+                "value": "height--60vh",
+                "label": "60%"
+               },
+               {
+                "value": "height--70vh",
+                "label": "70%"
+               },
+               {
+                "value": "height--80vh",
+                "label": "80%"
+               },
+               {
+                "value": "height--90vh",
+                "label": "90%"
+               },
+               {
+                "value": "height--100vh",
+                "label": "Full screen"
+               }
+             ],
+             "default": "height--60vh"
+           },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "text",
+            "default": "<p>Souriez, nos experts sont filmés</p>"
+          }
+      ]
+    },
+    {
+      "type": "image-text",
+      "name": "image-text",
+      "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "title",
+            "default": "Une histoire à contre-sens est forcément une histoire qui va dans le bon sens"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sed sapien sed velit luctus hendrerit sit amet nec ipsum. Maecenas in risus eget odio sodales luctus tincidunt ut nisi.</p>"
+          },
+       {
+         "type": "checkbox",
+         "id": "display-open",
+         "label": "Display open",
+         "default": true,
+         "info": "Display open in mobile"
+       }
+      ]
+    }
+
+  ]
+}
+{% endschema %}

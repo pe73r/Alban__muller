@@ -132,7 +132,7 @@
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 100%; // necessary for ie10
+  
 }
 
 @mixin flex-wrap($value: nowrap) {

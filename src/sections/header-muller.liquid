@@ -6,16 +6,17 @@
   {% endif %}
 </style>
 <div class="fadding__filter"></div>
-<div id="menu-mobile" class="menu-mobile mobile-only relative">
+<div id="menu-mobile" class="menu-mobile lap-and-up--hide relative">
   {%- render 'menu-mobile' -%}
 </div>
+<a name="header"> 
 <header>
   <div class="header__b2b pocket--hide">
      <h5><a class="mukta" href="/">Accès B to B <span>&#8594;</span></a></h5>
   </div>
   <div data-section-id="{{ section.id }}" id="section-{{ section.id }}" data-section-type="header-section" class="relative">
     <div class="container-header">
-     <div class="header__hamburguer mobile-only">
+     <div class="header__hamburguer lap-and-up--hide">
         <div id="hamburger" class="hamburguer__box">
           <div class="hambuguer-line1"></div>
           <div class="hambuguer-line2"></div>
@@ -78,6 +79,7 @@
    </div>
   </div>
 </header>
+</a>
 
 {% schema %}
   {
