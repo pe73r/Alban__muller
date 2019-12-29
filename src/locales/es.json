@@ -51,7 +51,7 @@
       "title": "Buscar productos en nuestro sitio",
       "placeholder": "buscar en nuestra tienda",
       "submit": "Buscar",
-      "question": "Tiene una pregunta ?" 
+      "question": "Tiene una pregunta ?"
     }
   },
   "blogs": {
@@ -261,7 +261,8 @@
       "on_sale_from_html": "En oferta desde {{ price }}",
       "from_text_html": "De {{ price }}",
       "quantity": "Cantidad",
-      "add_to_cart": "Agregar al carrito"
+      "add_to_cart": "Agregar al carrito",
+      "share": "comparte tu opinion"
     }
   },
   "gift_cards": {

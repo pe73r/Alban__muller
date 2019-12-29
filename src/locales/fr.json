@@ -261,7 +261,8 @@
       "on_sale_from_html": "En solde {{ price }}",
       "from_text_html": "À partir de {{ price }}",
       "quantity": "Quantité",
-      "add_to_cart": "Ajouter au panier"
+      "add_to_cart": "Ajouter au panier",
+      "share": "Partagez votre avis"
     }
   },
   "gift_cards": {
