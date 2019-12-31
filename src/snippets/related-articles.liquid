@@ -1,0 +1,28 @@
+<div class="related-articles">
+ <div class="container-large">
+  <div class="grid main-carousel carousel" data-flickity='{ "watchCSS": true, "pageDots": false,  "prevNextButtons": false }'>
+    {% for article in blog.articles limit: 3 %}
+     <div class="1/3--lap-and-up grid__cell">
+       <a href="{{ article.url }}">
+         <div class="related-articles__image">
+           {% if article.image.src != blank %}
+             {% render 'image' with img : article.image.src , class: 'full-width' %}
+           {% else %}
+            <img src="https://cdn.shopify.com/s/files/1/0254/1518/8529/files/champ.png?v=1577711755" alt="blog-alban-muller-default-image" class="full-width">
+           {% endif %}
+         </div>
+         <h2 class="related-articles__title">{{ article.title}}</h2>
+         <h4 class="blog__date">{{ article.created_at | date: format: 'abbreviated_date' }}</h4>
+         <p class="blog__text">
+          {% if article.excerpt.size > 0 %}
+           {{ article.excerpt }}
+          {% else %}
+           {{ article.content | strip_html | truncatewords: 100 }}
+          {% endif %}
+         </p>
+       </a>
+     </div>
+   {% endfor %}
+  </div>
+ </div>
+</div>

@@ -3,6 +3,10 @@
     "accessibility": {
       "skip_to_content": "Skip to content"
     },
+    "pagination": {
+        "next": "Next",
+        "before": "Anterior"
+    },
     "newsletter_form": {
       "confirmation": "Thanks! You will hear more from us!",
       "submit": "send",
@@ -36,7 +40,7 @@
       "powered_by_shopify_html": "This shop will be powered by {{ shopify }}"
     },
     "social": {
-      "share_on_facebook": "Share",
+      "share": "Share",
       "share_on_twitter": "Tweet",
       "share_on_pinterest": "Pin it",
       "alt_text": {
@@ -262,7 +266,8 @@
       "from_text_html": "From {{ price }}",
       "quantity": "Quantity",
       "add_to_cart": "Add to Cart",
-      "share": "Share your opinion"
+      "share": "Share your opinion",
+      "add": "Add to cart"
     }
   },
   "gift_cards": {

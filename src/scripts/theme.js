@@ -146,6 +146,7 @@ $(document).ready(function() {
 
 var $carousel = $('[data-product-carousel]').flickity(options);
     // Flickity instance
+
     var flkty = $carousel.data('flickity');
     // elements
     var $cellButtonGroup = $('.button-group--cells');
@@ -186,4 +187,3 @@ var $carousel = $('[data-product-carousel]').flickity(options);
         e.preventDefault();
     })
 }
- 

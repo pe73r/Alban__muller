@@ -1,0 +1,67 @@
+<section id="section--{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="blog-experts" class="blog-experts">
+ {% paginate blog.articles by 6 %}
+  <div class="container-medium">
+    <div class="blog__title">
+      {% if section.settings.title != blank %}
+       {{ section.settings.title }}
+      {% else %}
+       {{ blog.title }}
+      {% endif %}
+    </div>
+    <div class="blog__subtitle">{{ section.settings.text }}</div>
+  </div>
+  <div class="container-large">
+    <div class="grid">
+      {% for article in blog.articles%}
+        <div class="1/3--lap-and-up grid__cell">
+          <a href="{{ article.url }}">
+            <div class="blog__mobile-flex">
+             <div class="blog__image">
+               {% if article.image.src != blank %}
+                 {% render 'image' with img : article.image.src , class: 'full-width' %}
+               {% else %}
+                 <img src="https://cdn.shopify.com/s/files/1/0254/1518/8529/files/champ.png?v=1577711755" alt="blog-alban-muller-default-image" class="full-width">
+               {% endif %}
+             </div>
+             <h2 class="blog-content__title">{{ article.title}}</h2>
+           </div>
+           <div class="pocket--hide">
+            <h4 class="blog__date">{{ article.created_at | date: format: 'abbreviated_date' }}</h4>
+            <p class="blog__text">
+              {% if article.excerpt.size > 0 %}
+               {{ article.excerpt }}
+              {% else %}
+               {{ article.content | strip_html | truncatewords: 100 }}
+              {% endif %}
+            </p>
+          </div>
+         </a>
+      </div>
+    {% endfor %}
+   </div>
+</div>
+  {% if paginate.pages > 1 %}
+    {% include 'pagination' %}
+  {% endif %}
+{% endpaginate %}
+</section>
+
+{% schema %}
+{
+  "name": "Blog experts",
+  "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Blog title",
+        "default": "Blog Experts"
+      },
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": "text",
+        "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam quis sapien ante. In luctus vehicula est, eu sodales erat facilisis sed. Proin in turpis ligula. Etiam tincidunt est tortor</p>"
+      }
+  ]
+}
+{% endschema %}

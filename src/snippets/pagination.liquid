@@ -1,3 +1,21 @@
-<div class="pagination">
-  {{ paginate | default_pagination }}
+<div class="container-large">
+  <div class="pagination relative">
+      <div class="btn button--primary button--page">
+        {% unless paginate.current_page <= 1 %}
+          <a href="{{ paginate.previous.url }}"><</a>
+        {% endunless %}
+        <span>{{ paginate.current_page }}/{{ paginate.pages }}</span>
+        {% unless paginate.current_page >= paginate.pages %}
+          <a href="{{ paginate.next.url }}">></a>
+        {% endunless %}
+      </div>
+
+      {% unless paginate.current_page >= paginate.pages %}
+        <a class="btn button--primary button--pagination" href="{{ paginate.next.url }}">{{ 'general.pagination.next' | t }}</a>
+      {% endunless %}
+
+      {% if paginate.current_page == paginate.pages %}
+        <a class="btn button--primary button--pagination" href="{{ paginate.previous.url }}">{{ 'general.pagination.before' | t }}</a>
+      {% endif %}
+    </div>
 </div>
