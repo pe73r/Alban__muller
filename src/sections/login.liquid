@@ -5,14 +5,14 @@
 </style>
 <div class="login-page">
   <div class="grid grid--flush grid--middle login__background">
-    <div class="1/2--lap-and-up grid__cell">
+    <div class="7/12--lap-and-up grid__cell">
      {% if section.settings.image != blank %}
        <div class="login__image pocket--hide">
         {% render 'image' with img : section.settings.image , class: 'full-width' %}
        </div>
      {% endif %}
     </div>
-    <div class="1/2--lap-and-up grid__cell">
+    <div class="5/12--lap-and-up grid__cell">
       <div class="login-form__box">
         <div class="form-success hide" id="ResetSuccess">
           {{ 'customer.recover_password.success' | t }}

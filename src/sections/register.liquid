@@ -1,0 +1,68 @@
+<style>
+    .register__background{
+       --container-background-color: {{ section.settings.color }};
+     }
+</style>
+<div class="register-page">
+  <div class="grid grid--flush grid--middle register__background">
+    <div class="7/12--lap-and-up grid__cell">
+     {% if section.settings.image != blank %}
+       <div class="login__image pocket--hide">
+        {% render 'image' with img : section.settings.image , class: 'full-width' %}
+       </div>
+     {% endif %}
+    </div>
+    <div class="5/12--lap-and-up grid__cell">
+       <div class="login-form__box">
+         <h2 class="login__title align-center">{{ 'customer.register.title' | t }}</h2>
+           {% form 'create_customer' %}
+             {{ form.errors | default_errors }}
+            <h5 for="FirstName" class="login__label">{{ 'customer.register.first_name' | t }}</h5>
+            <input type="text"
+              name="customer[first_name]"
+              class="login__input"
+              id="FirstName"
+              autofocus
+              {% if form.first_name %}value="{{ form.first_name }}"{% endif %}>
+          <h5 for="Email" class="login__label">{{ 'customer.register.email' | t }}</h5>
+          <input type="email"
+            name="customer[email]"
+            id="Email"
+            class="{% if form.errors contains 'email' %}input-error{% endif %} login__input"
+            value="{% if form.email %}{{ form.email }}{% endif %}"
+            spellcheck="false"
+            autocomplete="off"
+            autocapitalize="off">
+         <h5 for="CreatePassword" class="login__label">{{ 'customer.register.password' | t }}</h5>
+         <input type="password"
+            name="customer[password]"
+            class="login__input"
+            id="CreatePassword"
+            class="{% if form.errors contains 'password' %}input-error{% endif %}">
+         <input type="submit" value="{{ 'customer.register.submit' | t }}" class="btn button--submit">
+         <div class="login__options">
+           <a href="{{ shop.url }}" class="login__cancel">{{ 'customer.register.cancel' | t }}</a>
+         </div>
+       {% endform %}
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Register page",
+  "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "color",
+        "id": "color",
+        "label": "Background color",
+        "default": "#f4f7f9"
+      }
+  ]
+}
+{% endschema %}

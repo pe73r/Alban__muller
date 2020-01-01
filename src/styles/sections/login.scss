@@ -8,6 +8,7 @@
   width: 60%;
   margin: 0 auto;
   max-width: 300px;
+  padding: 10px 0;
 }
 
 .login__title {
@@ -76,4 +77,10 @@
     margin: 60px auto;
   }
 
+}
+
+//// register ////
+
+.register__background{
+  background-color: var(--container-background-color, white);
 }
