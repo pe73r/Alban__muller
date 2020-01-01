@@ -79,9 +79,10 @@
   <main role="main" id="MainContent">
     {{ content_for_layout }}
   </main>
-
-  {% section 'footer-pictos' %}
-  {% section 'footer-muller' %}
+  {% unless template.name == "login"  %}
+    {% section 'footer-pictos' %}
+    {% section 'footer-muller' %}
+  {% endunless %}
 
 </body>
 </html>

@@ -1,0 +1,105 @@
+<style>
+    .login__background{
+       --container-background-color: {{ section.settings.color }};
+     }
+</style>
+<div class="login-page">
+  <div class="grid grid--flush grid--middle login__background">
+    <div class="1/2--lap-and-up grid__cell">
+     {% if section.settings.image != blank %}
+       <div class="login__image pocket--hide">
+        {% render 'image' with img : section.settings.image , class: 'full-width' %}
+       </div>
+     {% endif %}
+    </div>
+    <div class="1/2--lap-and-up grid__cell">
+      <div class="login-form__box">
+        <div class="form-success hide" id="ResetSuccess">
+          {{ 'customer.recover_password.success' | t }}
+        </div>
+        <div id="CustomerLoginForm" class="login__form">
+        {% form 'customer_login' %}
+            <h2 class="login__title align-center">{{ 'customer.login.title' | t }}</h2>
+            {{ form.errors | default_errors }}
+            <h5 class="login__label">{{ 'customer.login.email' | t }}</h5>
+            <input type="email"
+                   name="customer[email]"
+                   id="CustomerEmail"
+                   class="{% if form.errors contains 'email' %}input-error{% endif %} login__input"
+                   spellcheck="false"
+                   autocomplete="off"
+                   autocapitalize="off"
+                   autofocus>
+            {% if form.password_needed %}
+              <h5 class="login__label">{{ 'customer.login.password' | t }}</h5>
+              <input type="password"
+                     name="customer[password]"
+                     id="CustomerPassword"
+                     class="{% if form.errors contains 'password' %}input-error{% endif %} login__input">
+            {% endif %}
+           <input type="submit" class="btn button--submit" value="{{ 'customer.login.sign_in' | t }}">
+            <div class="login__options">
+                {% if form.password_needed %}
+                  <a class="login__forgot" href="#recover" id="RecoverPassword">{{ 'customer.login.forgot_password' | t }}</a>
+                {% endif %}
+                <a class="login__create" href="/account/register">
+                  {{ 'layout.customer.create_account' | t }}
+                </a>
+            </div>
+        {% endform %}
+      </div>
+      <div id="RecoverPasswordForm" class="hide login__password">
+        <h2 class="login__title align-center">{{ 'customer.recover_password.title' | t }}</h2>
+          {% form 'recover_customer_password' %}
+            {{ form.errors | default_errors }}
+
+            {% if form.posted_successfully? %}
+              <span class="hide reset-password-success"></span>
+            {% endif %}
+
+            <h5 class="login__label">{{ 'customer.recover_password.email' | t }}</h5>
+            <input type="email"
+                   name="email"
+                   id="RecoverEmail"
+                   spellcheck="false"
+                   autocomplete="off"
+                   autocapitalize="off"
+                   class="login__input">
+
+            <input type="submit" class="btn button--submit" value="{{ 'customer.recover_password.submit' | t }}">
+            <div class="login__options">
+              <a class="login__cancel" type="btn" id="HideRecoverPasswordLink">
+                {{ 'customer.recover_password.cancel' | t }}
+              </a>
+            </div>
+          {% endform %}
+      </div>
+  </div>
+    {% if shop.checkout.guest_login %}
+      <h2 >{{ 'customer.login.guest_title' | t }}</h2>
+
+      {% form 'guest_login' %}
+        <input type="submit" class="btn" value="{{ 'customer.login.guest_continue' | t }}">
+      {% endform %}
+    {% endif %}
+  </div>
+ </div>
+</div>
+{% schema %}
+{
+  "name": "Login page",
+  "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "color",
+        "id": "color",
+        "label": "Background color",
+        "default": "#f4f7f9"
+      }
+  ]
+}
+{% endschema %}

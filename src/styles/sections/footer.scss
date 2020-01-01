@@ -107,7 +107,7 @@ footer{
 
 .footer__legal {
   padding: 10px 0 10px 100px;
-  font-size: $font-size-legal;
+  font-size: $font-size-xs;
   ul{
     display: flex;
     @include display-flexbox;
