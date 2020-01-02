@@ -2,6 +2,7 @@
 /// account ////
 
 .page-account{
+  padding-bottom: 60px;
    .breadcrumbs-container{
      margin-bottom: 40px;
    }
@@ -115,9 +116,46 @@
   .orders__flex {
     padding: 15px;
   }
+
   .account__menu {
     padding: 0;
     max-width: 350px;
     background-color: $white;
   }
+}
+
+//// addresses ////
+
+.address-form{
+  max-width: 520px;
+  margin: 0 auto;
+  font-size: $font-size-text;
+  padding: 20px 0;
+  border-bottom: 1px solid $grey;
+}
+
+.address__header{
+  border-bottom: 1px solid $grey;
+}
+
+.address__content{
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 30px 0;
+
+}
+
+.address__input{
+  width: 100%;
+  border: 1px solid $grey;
+  margin: 10px 0;
+  margin-bottom: 20px;
+  height: 35px;
+}
+
+@media #{$pocket}{
+  .address__header{
+    border-bottom: none;
+  }
+
 }

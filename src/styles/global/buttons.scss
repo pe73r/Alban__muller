@@ -30,7 +30,7 @@
    &:hover{
       background-color: $black;
       a{
-        color:$white;
+        color:$white !important;
       }
    }
 }
