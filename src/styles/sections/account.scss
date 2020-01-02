@@ -1,0 +1,123 @@
+
+/// account ////
+
+.page-account{
+   .breadcrumbs-container{
+     margin-bottom: 40px;
+   }
+}
+.account__background{
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 400px;
+  width: 40%;
+}
+
+.account__title {
+  font-size: $font-size-heading;
+  font-weight: 300;
+  font-style: normal;
+  line-height: 1.3;
+  text-align: center;
+  margin-top: 0;
+}
+
+.account__subtitle {
+  font-size: $font-page-heading;
+  font-weight: 300;
+  line-height: 1.67;
+  letter-spacing: normal;
+  text-align: center;
+}
+
+.account__menu{
+  padding: 20px;
+  max-width: 300px;
+  margin: 0 auto;
+  background-color: $grey-account;
+   li{
+     margin-top: 30px;
+     padding-bottom: 30px;
+     border-bottom: 1px solid $grey;
+   }
+   a{
+     color: $grey;
+     text-decoration: none;
+   }
+}
+
+.account__orders{
+  border-bottom: 1px solid $grey;
+  cursor: pointer;
+}
+
+.orders__flex{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  font-size: $font-size-text;
+    a{
+     color: $grey;
+     text-decoration: none;
+    }
+}
+
+
+.order__column-1{
+  width: 50%;
+  display: flex;
+  align-items: center;
+    img{
+      margin-right: 10px;
+    }
+}
+
+.order__column-2{
+  width: 25%;
+}
+
+.order__column-3{
+  width: 25%;
+}
+
+.orders__toggle{
+  position: absolute;
+  top: 30px;
+  right: 15px;
+  z-index: 1;
+   svg{
+     cursor: pointer;
+     width: 25px;
+   }
+}
+
+.orders__line-item{
+  font-size: $font-size-xs;
+}
+
+.active-order{
+  background-color: $grey-account;
+}
+
+@media #{$pocket}{
+  .account__title {
+    font-size: $font-size-heading-mobile;
+    margin-top: 30px;
+  }
+
+  .account__subtitle {
+    font-size: $font-article-heading-mobile;
+  }
+
+  .orders__flex {
+    padding: 15px;
+  }
+  .account__menu {
+    padding: 0;
+    max-width: 350px;
+    background-color: $white;
+  }
+}

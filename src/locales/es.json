@@ -127,7 +127,10 @@
       "title": "Mi cuenta",
       "details": "Detalles de la cuenta",
       "view_addresses": "Ver direcciones",
-      "return": "Volver a detalles de la cuenta"
+      "return": "Volver a detalles de la cuenta",
+      "orders": "Mis pedidos",
+      "returns": "Mis devoluciones",
+      "loyalty": "Mi programa de fidelidad"
     },
     "activate_account": {
       "title": "Activar cuenta",
@@ -248,7 +251,10 @@
       "logged_in_as_html": "Conectado como {{ first_name }}",
       "log_out": "Cerrar sesión",
       "log_in": "Ingresar",
-      "create_account": "Crear cuenta"
+      "create_account": "Crear cuenta",
+      "orders": "Mis pedidos",
+      "returns": "Mis devoluciones",
+      "loyalty": "Mi programa de fidelización"
     },
     "footer": {
       "social_platform": "{{ name }} en {{ platform }}",

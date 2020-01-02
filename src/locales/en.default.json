@@ -127,7 +127,10 @@
       "title": "My Account",
       "details": "Account Details",
       "view_addresses": "View Addresses",
-      "return": "Return to Account Details"
+      "return": "Return to Account Details",
+      "orders": "My orders",
+      "returns": "My returns and refunds",
+      "loyalty": "My loyalty program"
     },
     "activate_account": {
       "title": "Activate Account",

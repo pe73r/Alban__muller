@@ -1,0 +1,119 @@
+<div
+  data-section-id="{{ section.id }}"
+  data-section-type="product"
+  data-enable-history-state="true"
+  itemscope itemtype="http://schema.org/Product"
+  class="page-product"
+  >
+
+  <meta itemprop="name" content="{{ product.title }}{% unless product.has_only_default_variant %} - {{ current_variant.title }}{% endunless %}">
+  <meta itemprop="url" content="{{ shop.url }}{{ current_variant.url }}">
+  <meta itemprop="brand" content="{{ product.vendor }}">
+  <meta itemprop="image" content="{{ featured_image | img_url: '600x600' }}">
+  <meta itemprop="description" content="{{ product.description | strip_html | escape }}">
+
+  {%- assign current_variant = product.selected_or_first_available_variant -%}
+  {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
+
+  {% render 'breadcrumbs' %}
+  <div class="container-large">
+    <div class="container-product">
+      <div class="product__image-container">
+        {% if featured_image != blank %}
+          <div class="product__image-buttons hide--pocket">
+            <div class="product__button product__carousel-arrow product__carousel-arrow--top">
+              {% render 'arrow-up' %}
+            </div>
+            <div class="button-group button-group--cells product__image-buttons-group">
+              <div data-product-buttons-group="{{ product.images.size }}" class="transition">
+                {% for image_product in product.images %}
+                  <div class="product__button product__button-number {% if forloop.index == 1 %}is-selected{% endif %}">0{{ forloop.index }}</div>
+                {% endfor %}
+              </div>
+            </div>
+            <div class=" product__button product__carousel-arrow product__carousel-arrow--bottom">
+              {% render 'arrow-down' %}
+            </div>
+          </div>
+
+          <div class="product__image-carousel">
+            <div data-product-carousel>
+              {% for image_product in product.images %}
+                {% include 'image' with img: image_product, classes: 'product__image carousel-cell' %}
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="product__content">
+        <div class="container container-mobile--l product__content-width">
+          {{ new }}
+          <h1 class="product__type">{{ product.type }}</h1>
+          <h2 class="product__title">{{ product.title }}</h2>
+
+          <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+            <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+            <meta itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
+            <link itemprop="availability" href="http://schema.org/{% if current_variant.available %}InStock{% else %}OutOfStock{% endif %}">
+
+            <form action="/cart/add" method="post" enctype="multipart/form-data">
+
+              <div data-price-wrapper>
+                <span data-product-price class="product__price">
+                  {%- assign price = current_variant.price | money_without_trailing_zeros -%}
+                  {{ price }}
+                </span>
+              </div>
+
+              <div class="rte product__description">
+                {{ product.description }}
+              </div>
+
+              <div class="product__quantity">
+                <label for="Quantity">{{ 'products.product.quantity' | t }}</label>
+                <div class="number-input">
+                  <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()">-</button>
+                  <input type="number" id="Quantity" class="quantity full-width" name="quantity" value="1" min="1">
+                  <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus">+</button>
+                </div>
+              </div>
+              <button type="submit" name="add" class="btn button--submit" data-add-to-cart
+                {% unless current_variant.available %}disabled="disabled"{% endunless %}>
+                  <span data-add-to-cart-text>
+                    {% if current_variant.available %}
+                      {{ 'products.product.add' | t }}
+                    {% else %}
+                      {{ 'products.product.sold_out' | t }}
+                    {% endif %}
+                  </span>
+              </button>
+              <div class="product__share">
+                {% render 'icon-share' %}
+                <span>{{ 'products.product.share' | t }}</span>
+              </div>
+
+            </form>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    {% unless product == empty %}
+      <script type="application/json" data-product-json>
+        {{ product | json }}
+      </script>
+    {% endunless %}
+
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Product pages",
+    "settings": [
+
+    ]
+  }
+{% endschema %}

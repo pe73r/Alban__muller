@@ -140,4 +140,12 @@ $(document).ready(function() {
             arrow.addClass('arrow-rotate');
         }
     }
-})
+  });
+
+
+  $('[data-order-container]').on('click', function() {
+      $(this).find('[data-order-content]').slideToggle();
+      $(this).toggleClass('active-order', 100);
+      $(this).find('[data-order-plus]').toggle();
+      $(this).find('[data-order-substract]').toggle();
+  });

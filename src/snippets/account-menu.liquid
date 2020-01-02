@@ -1,0 +1,8 @@
+<div class="account__menu">
+  <ul>
+    <li><a class="{% if template.name == 'addresses' %} bold {% endif %}" href="/account/addresses">{{ 'customer.account.view_addresses' | t }}</a></li>
+    <li><a class="{% if template.name == 'account' %} bold {% endif %}" href="/account">{{ 'customer.account.orders' | t }}</a></li>
+    <li><a href="/account">{{ 'customer.account.returns' | t }}</a></li>
+    <li><a href="/account">{{ 'customer.account.loyalty' | t }}</a></li>
+  </ul>
+</div>

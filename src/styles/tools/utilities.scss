@@ -197,7 +197,10 @@ ol {
    .bold{
        font-weight: bold;
    }
-
+  .cross{
+    text-decoration: line-through;
+   }
+   
   .position-absolute-center{
     position: absolute;
     top:50%;

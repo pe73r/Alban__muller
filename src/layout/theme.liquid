@@ -79,8 +79,12 @@
   <main role="main" id="MainContent">
     {{ content_for_layout }}
   </main>
-  {% unless template.name == "login" or template.name == "register" %}   
-    {% section 'footer-pictos' %}
+  {% unless template.name == "login" or template.name == "register"%}
+     {% if template.name == "account" or template.name == "addresses" %}
+      {% section 'account-pictos' %}
+     {% else %}  
+      {% section 'footer-pictos' %}
+     {% endif %}
     {% section 'footer-muller' %}
   {% endunless %}
 

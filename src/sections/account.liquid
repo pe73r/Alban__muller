@@ -1,0 +1,84 @@
+<div class="page-account relative">
+  {% render 'breadcrumbs' %}
+  <div class="account__background pocket--hide">
+   {% if section.settings.image != blank %}
+    {% render 'image' with img : section.settings.image, class: 'full-width' %}
+   {% endif %}
+  </div>
+  <div class="container-large">
+   <div class="grid">
+      <div class="1/3--lap-and-up grid__cell relative">
+        {% render 'account-menu' %}
+      </div>
+      <div class="2/3--lap-and-up grid__cell relative">
+        <h1 class="account__title">{{ 'customer.account.title' | t }}</h1>
+        <h2 class="account__subtitle">{{ 'customer.orders.title' | t }}</h2>
+          {% if customer.orders.size != 0 %}
+            {% for order in customer.orders %}
+              {% for line_item in order.line_items %}
+               <div data-order-container class="account__orders relative">
+                <div class="orders__toggle pocket--hide">
+                  <div data-order-plus class="">{% render 'icon-plus' %}</div>
+                  <div data-order-substract class="none">{% render 'icon-substract' %}</div>
+                </div>
+                <div class="orders__flex relative">
+                 <div class="order__column-1">
+                  <p class="bold">{{ 'customer.orders.order_number' | t }} nº {{ order.order_number }} du {{ order.created_at | date: format: 'abbreviated_date' }}</p>
+                  {% if line_item.fulfillment %}
+                    <p>{{ 'customer.order.tracking_number' | t }}{{ line_item.fulfillment.tracking_number }}</p>
+                   {% endif %}
+                 </div>
+                 <div class="order__column-2">
+                   <p><a href="{{ order.order_status_url }}">Status</a></p>
+                 </div>
+                 <div class="order__column-3">
+                   <p>{{ order.total_price | money_without_trailing_zeros  }}</p>
+                 </div>
+                </div>
+                <div data-order-content class="none">
+                  <div  class="orders__flex orders__line-item">
+                    <div class="order__column-1">
+                      <div>
+                        {{ line_item.image | img_url: '100x100' | img_tag }}
+                      </div>
+                      <div>
+                         {{ line_item.title | link_to: line_item.product.url }}
+                      </div>
+                    </div>
+                    <div class="order__column-2">
+                      <p>Ref: {{ line_item.id }}</p>
+                      <p>Quantity: {{ line_item.quantity }}</p>
+                    </div>
+                    <div class="order__column-3">
+                      {% if line_item.original_price > line_item.price %}
+                        <p class="cross">{{ line_item.original_price | money_without_trailing_zeros  }}</p>
+                        <p> {{ line_item.original_price | minus: product.price | times: 100.0 | divided_by: line_item.price | round: 2 | remove: '.0' | floor}}%</p>
+                      {% endif %}
+                      {{ line_item.price | money_without_trailing_zeros  }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          {% endfor %}
+        {% else %}
+         <p>{{ 'customer.orders.none' | t }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+ </div>
+</div>
+
+{% schema %}
+{
+  "name": "Account",
+  "settings": [
+     {
+       "type": "image_picker",
+       "id": "image",
+       "label": "background image"
+     }
+  ]
+}
+{% endschema %}
