@@ -15,10 +15,9 @@
         <h2 class="account__subtitle">{{ 'customer.orders.title' | t }}</h2>
           {% if customer.orders.size != 0 %}
             {% for order in customer.orders %}
-              {% for line_item in order.line_items %}
                <div data-order-container class="account__orders relative">
                 <div class="orders__toggle pocket--hide">
-                  <div data-order-plus class="">{% render 'icon-plus' %}</div>
+                  <div data-order-plus>{% render 'icon-plus' %}</div>
                   <div data-order-substract class="none">{% render 'icon-substract' %}</div>
                 </div>
                 <div class="orders__flex relative">
@@ -35,31 +34,28 @@
                    <p>{{ order.total_price | money_without_trailing_zeros  }}</p>
                  </div>
                 </div>
-                <div data-order-content class="none">
-                  <div  class="orders__flex orders__line-item">
+                {% for line_item in order.line_items %}
+                 <div data-order-content class="none">
+                   <div  class="orders__flex orders__line-item">
                     <div class="order__column-1">
-                      <div>
-                        {{ line_item.image | img_url: '100x100' | img_tag }}
-                      </div>
-                      <div>
-                         {{ line_item.title | link_to: line_item.product.url }}
-                      </div>
-                    </div>
+                      {{ line_item.image | img_url: '100x100' | img_tag }}
+                      {{ line_item.title | link_to: line_item.product.url }}
+                    </div> 
                     <div class="order__column-2">
-                      <p>Ref: {{ line_item.id }}</p>
-                      <p>Quantity: {{ line_item.quantity }}</p>
+                     <p>Ref: {{ line_item.id }}</p>
+                     <p>Quantity: {{ line_item.quantity }}</p>
                     </div>
                     <div class="order__column-3">
-                      {% if line_item.original_price > line_item.price %}
-                        <p class="cross">{{ line_item.original_price | money_without_trailing_zeros  }}</p>
-                        <p> {{ line_item.original_price | minus: product.price | times: 100.0 | divided_by: line_item.price | round: 2 | remove: '.0' | floor}}%</p>
-                      {% endif %}
-                      {{ line_item.price | money_without_trailing_zeros  }}
+                     {% if line_item.original_price > line_item.price %}
+                      <p class="cross">{{ line_item.original_price | money_without_trailing_zeros  }}</p>
+                      <p> {{ line_item.original_price | minus: product.price | times: 100.0 | divided_by: line_item.price | round: 2 | remove: '.0' | floor}}%</p>
+                     {% endif %}
+                     {{ line_item.price | money_without_trailing_zeros  }}
                     </div>
-                  </div>
-                </div>
+                   </div>
+                 </div>
+                {% endfor %}
               </div>
-            {% endfor %}
           {% endfor %}
         {% else %}
          <p>{{ 'customer.orders.none' | t }}</p>

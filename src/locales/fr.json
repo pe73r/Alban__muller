@@ -215,7 +215,7 @@
       "success": "Nous vous avons fait parvenir un courriel pour réinitialiser votre mot de passe."
     },
     "reset_password": {
-      "title": "Réinitialiser le mot de passe du compte",
+      "title": "Réinitialiser le mot de passe",
       "subtext": "Entrez un nouveau mot de passe pour {{ email }}",
       "submit": "Réinitialiser le mot de passe",
       "password": "Mot de passe",

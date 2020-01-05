@@ -215,7 +215,7 @@
       "success": "Hemos enviado un correo electrónico con un enlace para actualizar su contraseña."
     },
     "reset_password": {
-      "title": "Restablecer contraseña de cuenta",
+      "title": "Restablecer contraseña",
       "subtext": "Ingrese una nueva contraseña para {{ email }}",
       "password": "Contraseña",
       "password_confirm": "Confirmar contraseña",
