@@ -2,7 +2,7 @@
   "name": "alban-muller-slate",
   "version": "0.0.1",
   "devDependencies": {
-    "@shopify/slate-tools": "0.14.0"
+    "@shopify/slate-tools": "1.0.0-beta.19"
   },
   "dependencies": {
     "stickybits": "^3.7.1"
